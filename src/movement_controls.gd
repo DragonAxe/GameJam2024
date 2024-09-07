@@ -9,6 +9,7 @@ func integrate_forces(state: PhysicsDirectBodyState2D) -> void:
   state.linear_velocity = player_vector * 210
 
   # Face player in the direction of where it's moving.
-  var angle_to_target : float = player_vector.angle_to(Vector2.UP.rotated(parent.rotation))
-  parent.rotate(angle_to_target * 0.1)
-  # parent.look_at(parent.global_position + player_vector.rotated(PI / 2))
+  var player_angle : float = player_vector.angle()
+  if player_vector != Vector2.ZERO:
+    var target_angle : float = lerp_angle(parent.rotation, player_angle + PI / 2, 0.25)
+    parent.rotation = target_angle
