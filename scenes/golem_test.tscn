@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://83005jkemm6j"]
+[gd_scene load_steps=6 format=3 uid="uid://410mx0e0n6ty"]
 
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="1_h7djf"]
-[ext_resource type="Script" path="res://src/player.gd" id="2_8v3tc"]
-[ext_resource type="Script" path="res://src/movement_controls.gd" id="3_cunfk"]
-[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="4_p8m1d"]
+[ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="2_74ncs"]
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="5_5kenb"]
 [ext_resource type="Script" path="res://src/golem_spawner.gd" id="5_8cuo0"]
 
@@ -11,9 +9,6 @@
 vertices = PackedVector2Array(-235.352, 70.9609, -222.344, 447.109, -823.969, 453.883, -822.023, -454.781, -222.023, -442.203, -223.031, -80.0625, 317.047, 73.0391, 300.047, -76.9375, 804.063, -449.938, 809.93, 452.977, 315.047, 452.008, 298.047, -447.047)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 0, 5, 7), PackedInt32Array(8, 9, 10, 6), PackedInt32Array(11, 8, 6, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-832, -465, -212, -452, -213, -90, 290, -87, 288, -457, 814, -460, 820, 463, 305, 462, 307, 83, -225, 81, -212, 457, -834, 464)])
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_f7xuq"]
-radius = 67.0298
 
 [node name="GolemTest" type="Node"]
 
@@ -24,26 +19,17 @@ navigation_polygon = SubResource("NavigationPolygon_28rws")
 
 [node name="Camera2D" type="Camera2D" parent="Scene2D"]
 
-[node name="Golem" parent="Scene2D" instance=ExtResource("1_h7djf")]
+[node name="Golem" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_h7djf")]
 position = Vector2(-530, -218)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Player" type="RigidBody2D" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["player"]]
-position = Vector2(631, 308)
-script = ExtResource("2_8v3tc")
-integrate_forces_modules = [NodePath("MovementControls")]
-
-[node name="MovementControls" type="Node" parent="Scene2D/Player"]
-script = ExtResource("3_cunfk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene2D/Player"]
-shape = SubResource("CircleShape2D_f7xuq")
-
-[node name="Icon" type="Sprite2D" parent="Scene2D/Player"]
-texture = ExtResource("4_p8m1d")
+[node name="Player" parent="Scene2D" instance=ExtResource("2_74ncs")]
 
 [node name="GolemSpawner" type="Node" parent="Scene2D"]
 script = ExtResource("5_8cuo0")
 golem_scene = ExtResource("1_h7djf")
 
-[node name="PauseMenu" parent="." instance=ExtResource("5_5kenb")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("dialog", "focused_control") instance=ExtResource("5_5kenb")]
 visible = false
+dialog = NodePath("DialogBox")
+focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")

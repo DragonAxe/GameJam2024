@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://coo4otvenrtfh"]
+
+[ext_resource type="Script" path="res://src/player.gd" id="1_l3klf"]
+[ext_resource type="Script" path="res://src/movement_controls.gd" id="2_1px6n"]
+[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="3_13m2u"]
+[ext_resource type="Script" path="res://src/grab_controls.gd" id="4_l8q7e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7xuq"]
+radius = 67.0298
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbhp"]
+size = Vector2(120, 120)
+
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["player"]]
+script = ExtResource("1_l3klf")
+integrate_forces_modules = [NodePath("MovementControls")]
+
+[node name="MovementControls" type="Node" parent="."]
+script = ExtResource("2_1px6n")
+
+[node name="GrabControl" type="Node" parent="." node_paths=PackedStringArray("grab_area")]
+script = ExtResource("4_l8q7e")
+grab_area = NodePath("../GrabArea")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f7xuq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("3_13m2u")
+
+[node name="GrabArea" type="Area2D" parent="."]
+position = Vector2(0, -120)
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("RectangleShape2D_uxbhp")

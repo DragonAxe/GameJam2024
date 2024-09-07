@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyfob7uhlklcs"]
+[gd_scene load_steps=5 format=3 uid="uid://cyfob7uhlklcs"]
 
 [ext_resource type="Script" path="res://src/obelisk.gd" id="1_snr1n"]
 [ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="2_hkmar"]
@@ -10,8 +10,10 @@ spread = 180.0
 initial_velocity_min = 1000.0
 initial_velocity_max = 1000.0
 
-[node name="Obelisk" type="Node2D"]
-position = Vector2(400, 200)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djdbp"]
+size = Vector2(120, 120)
+
+[node name="Obelisk" type="Node2D" groups=["obelisk"]]
 script = ExtResource("1_snr1n")
 
 [node name="Big Particles" type="GPUParticles2D" parent="."]
@@ -55,3 +57,10 @@ draw_order = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_hkmar")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_djdbp")
