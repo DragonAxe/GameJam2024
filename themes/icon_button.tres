@@ -1,0 +1,67 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://f4ggeqa3wevc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbbvh"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_bottom = 4
+border_color = Color(0.266667, 0.266667, 0.266667, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnwhf"]
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+shadow_color = Color(0.666667, 1, 0.666667, 1)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtc0o"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.533333, 0.533333, 0.533333, 1)
+border_width_bottom = 4
+border_color = Color(0.266667, 0.266667, 0.266667, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx51k"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.4, 0.4, 0.4, 1)
+border_width_bottom = 4
+border_color = Color(0.266667, 0.266667, 0.266667, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmixg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+border_width_top = 4
+border_color = Color(0.2, 0.2, 0.2, 1)
+shadow_color = Color(0.666667, 0.666667, 0.666667, 1)
+shadow_size = 1
+
+[resource]
+default_font_size = 32
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.4, 0.4, 0.4, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_kbbvh")
+Button/styles/focus = SubResource("StyleBoxFlat_nnwhf")
+Button/styles/hover = SubResource("StyleBoxFlat_gtc0o")
+Button/styles/normal = SubResource("StyleBoxFlat_sx51k")
+Button/styles/pressed = SubResource("StyleBoxFlat_vmixg")
