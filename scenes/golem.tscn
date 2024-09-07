@@ -1,26 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c03ibs6ruv5mp"]
+[gd_scene load_steps=4 format=3 uid="uid://c03ibs6ruv5mp"]
 
 [ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="1_2gt2m"]
 [ext_resource type="Script" path="res://src/golem.gd" id="1_8frd6"]
-[ext_resource type="Script" path="res://src/golem_movement.gd" id="2_v0qo3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2jch"]
 radius = 69.1158
 
-[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules")]
+[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("1_8frd6")
-integrate_forces_modules = [NodePath("GolemMovement")]
-
-[node name="GolemMovement" type="Node" parent="." node_paths=PackedStringArray("navigation_agent")]
-script = ExtResource("2_v0qo3")
-navigation_agent = NodePath("../NavigationAgent2D")
+navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f2jch")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(1, 0.407246, 0.338652, 1)
-position = Vector2(-1, -1)
 texture = ExtResource("1_2gt2m")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
