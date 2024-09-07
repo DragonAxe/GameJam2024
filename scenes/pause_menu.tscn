@@ -59,21 +59,14 @@ path = "pause_unpause"
 show_mode = 0
 force_type = 0
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("dialog", "focused_control")]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("dialog", "focused_control") groups=["disable_escape_to_quit"]]
 process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_qbybr")
 dialog = NodePath("DialogBox")
 focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
 
 [node name="BackgroundBlur" type="ColorRect" parent="." node_paths=PackedStringArray("animation_player")]
 material = SubResource("ShaderMaterial_v46ai")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -89,16 +82,15 @@ libraries = {
 }
 
 [node name="DialogBox" type="PanelContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.0
-offset_top = -155.0
-offset_right = 154.0
-offset_bottom = 155.0
+offset_left = -207.5
+offset_top = -269.5
+offset_right = 207.5
+offset_bottom = 269.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_4ygx5")
