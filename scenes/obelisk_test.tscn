@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh3lbspukt74v"]
+[gd_scene load_steps=4 format=3 uid="uid://dlbmml8onsfpp"]
 
-[ext_resource type="PackedScene" uid="uid://cyfob7uhlklcs" path="res://scenes/obelisk.tscn" id="1_7wyas"]
+[ext_resource type="PackedScene" path="res://scenes/obelisk.tscn" id="1_7wyas"]
 [ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="1_d8bpw"]
-[ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="2_gcfk1"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_gcfk1"]
 
 [node name="ObeliskTest" type="Node2D"]
 
@@ -13,5 +13,4 @@ texture = ExtResource("1_d8bpw")
 [node name="Obelisk" parent="." instance=ExtResource("1_7wyas")]
 position = Vector2(300, 200)
 
-[node name="Player" parent="." node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_gcfk1")]
-integrate_forces_modules = [NodePath("MovementControls")]
+[node name="Player" parent="." instance=ExtResource("2_gcfk1")]
