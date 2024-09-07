@@ -57,15 +57,19 @@ gdscript/warnings/deprecated_keyword=2
 gdscript/warnings/confusable_identifier=2
 gdscript/warnings/confusable_local_declaration=2
 gdscript/warnings/confusable_local_usage=2
-gdscript/warnings/confusable_capture_reassignment=2
 gdscript/warnings/property_used_as_function=2
 gdscript/warnings/constant_used_as_function=2
 gdscript/warnings/function_used_as_property=2
+gdscript/warnings/confusable_capture_reassignment=2
 
 [display]
 
 window/size/viewport_width=1720
 window/size/viewport_height=980
+
+[dotnet]
+
+project/assembly_name="Game Jam 2024"
 
 [editor_plugins]
 
@@ -108,6 +112,12 @@ pause_unpause={
 "deadzone": 0.5,
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+player_grab_release={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":74,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 
