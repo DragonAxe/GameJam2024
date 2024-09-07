@@ -71,6 +71,13 @@ window/size/viewport_height=980
 
 enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://scenes/": "orange",
+"res://src/": "blue"
+}
+
 [input]
 
 player_up={
