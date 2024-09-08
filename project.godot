@@ -58,10 +58,10 @@ gdscript/warnings/deprecated_keyword=2
 gdscript/warnings/confusable_identifier=2
 gdscript/warnings/confusable_local_declaration=2
 gdscript/warnings/confusable_local_usage=2
+gdscript/warnings/confusable_capture_reassignment=2
 gdscript/warnings/property_used_as_function=2
 gdscript/warnings/constant_used_as_function=2
 gdscript/warnings/function_used_as_property=2
-gdscript/warnings/confusable_capture_reassignment=2
 
 [display]
 

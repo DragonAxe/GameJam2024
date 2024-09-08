@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqcam4o83guaj"]
+[gd_scene load_steps=6 format=3 uid="uid://cqcam4o83guaj"]
 
 [ext_resource type="Script" path="res://src/hag_stone.gd" id="1_vtohs"]
+[ext_resource type="Texture2D" uid="uid://b0nq7lkigupqv" path="res://textures/square.png" id="2_lg1qb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgimf"]
 radius = 60.0083
@@ -38,5 +39,9 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_7ykx4")
+
+[node name="Square" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_lg1qb")
 
 [connection signal="area_entered" from="SnapArea" to="." method="_on_snap_area_entered"]
