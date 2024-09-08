@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddc0tonn1xll2"]
+[gd_scene load_steps=19 format=3 uid="uid://ddc0tonn1xll2"]
 
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="1_6r2h2"]
 [ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="1_btsov"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cyfob7uhlklcs" path="res://scenes/obelisk.tscn" id="3_a11kn"]
 [ext_resource type="PackedScene" uid="uid://crhu1tn6dqxvq" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
 [ext_resource type="Shader" path="res://shaders/shadows.gdshader" id="6_i8nwb"]
+[ext_resource type="Script" path="res://src/visible_on_play.gd" id="7_5r1tn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
 vertices = PackedVector2Array(2495, 2654, 6345.62, 6367.53, -6356.84, 6332.46, 1226, 2654, 6392.37, -6369.46, 2495, 1318, -6345.15, -6404.53, 1842, 1172, 1842, 1318, 258, 1172, -103, 1115.01, 258, 2104, -103, 2104, -563, 1115.01, -563, 2555, 716, 2555, 1226, 1654, 716, 1654)
@@ -155,10 +156,11 @@ position = Vector2(-1791, 334)
 
 [node name="Lights" type="Node2D" parent="Scene2D"]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Scene2D/Lights"]
+[node name="Moon" type="DirectionalLight2D" parent="Scene2D/Lights"]
 visible = false
 rotation = -0.344855
-shadow_enabled = true
+color = Color(0.796179, 0.868654, 1, 1)
+energy = 0.3
 shadow_item_cull_mask = 2
 height = 1.0
 
@@ -167,8 +169,10 @@ visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Shadows" type="Polygon2D" parent="Scene2D/Lights"]
+visible = false
 material = SubResource("ShaderMaterial_u85xi")
 polygon = PackedVector2Array(-6973, -7316, 7945, -7299, 7775, 7517, -7244, 7686)
+script = ExtResource("7_5r1tn")
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
 visible = false

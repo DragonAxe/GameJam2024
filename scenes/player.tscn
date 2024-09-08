@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://coo4otvenrtfh"]
+[gd_scene load_steps=10 format=3 uid="uid://coo4otvenrtfh"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_l3klf"]
 [ext_resource type="Script" path="res://src/movement_controls.gd" id="2_1px6n"]
 [ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="3_13m2u"]
 [ext_resource type="Script" path="res://src/player_health.gd" id="4_gvs2c"]
 [ext_resource type="Script" path="res://src/grab_controls.gd" id="4_l8q7e"]
+[ext_resource type="Script" path="res://src/visible_on_play.gd" id="6_u5p12"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7xuq"]
 radius = 67.0298
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbhp"]
 size = Vector2(120, 120)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o5bil"]
+polygon = PackedVector2Array(-64, -52, -64, 54, -52, 64, 50, 64, 64, 54, 64, -52, 51, -64, -50, -64)
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["player"]]
 linear_damp = 30.0
@@ -43,3 +47,9 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
 shape = SubResource("RectangleShape2D_uxbhp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_o5bil")
+occluder_light_mask = 2
+script = ExtResource("6_u5p12")
