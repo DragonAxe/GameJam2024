@@ -1,5 +1,6 @@
 class_name Obelisk extends Node2D
 
+var pulsed : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,3 +11,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
   pass
 
+func pulse() -> void:
+  if pulsed:
+    return
+  pulsed = true
+
+func reset() -> void:
+  pulsed = false
