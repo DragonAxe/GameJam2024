@@ -11,6 +11,7 @@ var particle_scene : PackedScene
 var particle_texture_size : Vector2
 var particles : Array[Node2D]
 var pulsed : bool = false
+var pulse_active : bool = false
 var current_radius : float
 var power_duration : float
 
@@ -49,6 +50,9 @@ func update_pulse_wave(frac: float) -> void:
     var s : float = 2.15 * current_radius * sin(PI / particle_count)
     particle.scale = Vector2(s / particle_texture_size.x, pulse_thickness / particle_texture_size.y)
     particle.rotation = PI * 2 * i / particle_count + PI / 2
+
+func activate_pulse(_pulse_active : bool) -> void:
+  pulse_active = _pulse_active
 
 func pulse() -> void:
   if pulsed:

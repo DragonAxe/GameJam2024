@@ -14,9 +14,10 @@ size = Vector2(274, 147)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xwcks"]
 polygon = PackedVector2Array(-101, 37, -118, -8, -115, -13, -142, -72, -134, -92, -101, -104, -101, -97, -86, -79, -94, -73, -89, -71, -82, -74, -80, -70, -93, -51, -96, -40, -83, -42, -73, -40, -62, -34, -57, -49, -50, -61, -47, -68, -49, -74, -33, -73, -35, -68, -16, -69, -11, -61, -6, -50, -4, -42, 8, -46, 13, -54, 11, -59, 18, -72, 26, -74, 40, -74, 47, -74, 44, -69, 56, -64, 61, -58, 59, -50, 68, -47, 68, -47, 84, -46, 96, -41, 96, -47, 86, -59, 78, -73, 83, -75, 87, -72, 92, -75, 92, -77, 86, -80, 89, -86, 102, -98, 97, -103, 99, -106, 122, -100, 133, -93, 140, -81, 142, -74, 117, -17, 120, -9, 95, 41, 49, 57, 0, 37, -32, 55, -40, 54)
 
-[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["golem"]]
+[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules", "movement") groups=["golem"]]
 script = ExtResource("1_8frd6")
 integrate_forces_modules = [NodePath("GolemMovement")]
+movement = NodePath("GolemMovement")
 
 [node name="DiscoverySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_6tnob")

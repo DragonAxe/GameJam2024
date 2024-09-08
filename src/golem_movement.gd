@@ -1,4 +1,4 @@
-extends Node
+class_name GolemMovement extends Node
 
 @export var movement_speed: float = 100.0
 
