@@ -11,8 +11,9 @@
 scale = Vector2(50, 50)
 texture = ExtResource("1_d8bpw")
 
-[node name="Obelisk" parent="." instance=ExtResource("1_7wyas")]
+[node name="Obelisk" parent="." node_paths=PackedStringArray("collision_shapes") instance=ExtResource("1_7wyas")]
 position = Vector2(300, 200)
+collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_gcfk1")]
 integrate_forces_modules = [NodePath("MovementControls")]

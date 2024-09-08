@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddc0tonn1xll2"]
+[gd_scene load_steps=20 format=3 uid="uid://ddc0tonn1xll2"]
 
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="1_6r2h2"]
 [ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="1_btsov"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="2_tjvhw"]
 [ext_resource type="PackedScene" uid="uid://cqcam4o83guaj" path="res://scenes/hag_stone.tscn" id="3_6o678"]
 [ext_resource type="PackedScene" uid="uid://cyfob7uhlklcs" path="res://scenes/obelisk.tscn" id="3_a11kn"]
-[ext_resource type="PackedScene" uid="uid://crhu1tn6dqxvq" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
+[ext_resource type="PackedScene" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
 [ext_resource type="Shader" path="res://shaders/shadows.gdshader" id="6_i8nwb"]
+[ext_resource type="Script" path="res://src/obelisk_timer.gd" id="6_o3nlv"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="7_5r1tn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
@@ -82,29 +83,41 @@ shape = SubResource("RectangleShape2D_cwjf2")
 
 [node name="HagStones" type="Node2D" parent="Scene2D"]
 
-[node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+[node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk", "snap_area", "texture_rect") instance=ExtResource("3_6o678")]
 position = Vector2(-523, -496)
 matched_obelisk = NodePath("../../Obelisks/Obelisk")
+snap_area = NodePath("SnapArea")
+texture_rect = NodePath("TextureRect")
 
-[node name="HagStone2" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+[node name="HagStone2" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk", "snap_area", "texture_rect") instance=ExtResource("3_6o678")]
 position = Vector2(-313, -965)
 matched_obelisk = NodePath("../../Obelisks/Obelisk2")
+snap_area = NodePath("SnapArea")
+texture_rect = NodePath("TextureRect")
 
-[node name="HagStone3" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+[node name="HagStone3" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk", "snap_area", "texture_rect") instance=ExtResource("3_6o678")]
 position = Vector2(215, -1044)
 matched_obelisk = NodePath("../../Obelisks/Obelisk3")
+snap_area = NodePath("SnapArea")
+texture_rect = NodePath("TextureRect")
 
-[node name="HagStone4" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+[node name="HagStone4" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk", "snap_area", "texture_rect") instance=ExtResource("3_6o678")]
 position = Vector2(519, -572)
 matched_obelisk = NodePath("../../Obelisks/Obelisk4")
+snap_area = NodePath("SnapArea")
+texture_rect = NodePath("TextureRect")
 
-[node name="HagStone5" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+[node name="HagStone5" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk", "snap_area", "texture_rect") instance=ExtResource("3_6o678")]
 position = Vector2(323, -177)
 matched_obelisk = NodePath("../../Obelisks/Obelisk5")
+snap_area = NodePath("SnapArea")
+texture_rect = NodePath("TextureRect")
 
-[node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+[node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk", "snap_area", "texture_rect") instance=ExtResource("3_6o678")]
 position = Vector2(-246, -105)
 matched_obelisk = NodePath("../../Obelisks/Obelisk6")
+snap_area = NodePath("SnapArea")
+texture_rect = NodePath("TextureRect")
 
 [node name="Lights" type="Node2D" parent="Scene2D"]
 
@@ -128,59 +141,98 @@ script = ExtResource("7_5r1tn")
 
 [node name="Obelisks" type="Node2D" parent="Scene2D"]
 
-[node name="Obelisk" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+[node name="Obelisk" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(0, 1, 1, 1)
 position = Vector2(1219, 1153)
+collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
-[node name="Obelisk2" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+[node name="Obelisk2" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(-1590, 888)
+collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
-[node name="Obelisk3" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+[node name="Obelisk3" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(1, 0, 1, 1)
 position = Vector2(-1495, -616)
+collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
-[node name="Obelisk4" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+[node name="Obelisk4" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-592, -1752)
+collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
-[node name="Obelisk5" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+[node name="Obelisk5" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(1711, -1420)
+collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
-[node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+[node name="Obelisk6" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(0, 0, 1, 1)
 position = Vector2(2044, 198)
+collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
-[node name="Player" parent="Scene2D" instance=ExtResource("1_btsov")]
+[node name="ObeliskTimer" type="Timer" parent="Scene2D/Obelisks"]
+wait_time = 3.0
+script = ExtResource("6_o3nlv")
+
+[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_btsov")]
+integrate_forces_modules = [NodePath("MovementControls")]
 
 [node name="Golems" type="Node2D" parent="Scene2D"]
 
-[node name="Golem" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(-1276, -961)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
-[node name="Golem2" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem2" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(-295, -1279)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
-[node name="Golem3" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem3" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(1019, -1431)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
-[node name="Golem4" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem4" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(2140, -348)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
-[node name="Golem5" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem5" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(1930, 1319)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
-[node name="Golem6" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem6" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(114, 1756)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
-[node name="Golem7" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem7" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(-981, 1271)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
-[node name="Golem8" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem8" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("2_tjvhw")]
 position = Vector2(-1791, 334)
+integrate_forces_modules = [NodePath("GolemMovement")]
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
 [node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("dialog", "focused_control") instance=ExtResource("1_6r2h2")]
 visible = false
+dialog = NodePath("DialogBox")
+focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
+
+[connection signal="timeout" from="Scene2D/Obelisks/ObeliskTimer" to="Scene2D/Obelisks/ObeliskTimer" method="_on_timeout"]
