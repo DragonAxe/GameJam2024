@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @export_category("Scene Internal Nodes")
 @export var dialog: Control
@@ -6,6 +6,7 @@ extends Control
 
 
 func _ready() -> void:
+  visible = true
   dialog.visible = false
 
 

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://83005jkemm6j"]
+
+[ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="1_h7djf"]
+[ext_resource type="PackedScene" uid="uid://c7yvuanblqci0" path="res://scenes/player.tscn" id="2_74ncs"]
+[ext_resource type="Script" path="res://src/golem_spawner.gd" id="5_8cuo0"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_28rws"]
+vertices = PackedVector2Array(2602.59, -1756.17, 2808.39, 1909.34, 345.797, 1760.57, 314.797, 278.422, 319.477, -280.188, -170.242, 1748.2, -2113.91, 1787.79, -2086.08, -1651.07, -532.148, -1512.68, -251.961, -269.852, -206.258, 255.539, 258.438, -1560.83)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10), PackedInt32Array(10, 9, 4, 3), PackedInt32Array(0, 4, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2096, -1662, -524, -1522, -244, -280, 309, -290, 248, -1570, 2612, -1767, 2819, 1920, 336, 1770, 305, 288, -196, 266, -160, 1758, -2124, 1798)])
+
+[node name="GolemTest" type="Node"]
+
+[node name="Scene2D" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Scene2D"]
+navigation_polygon = SubResource("NavigationPolygon_28rws")
+
+[node name="Golem" parent="Scene2D" instance=ExtResource("1_h7djf")]
+position = Vector2(-530, -218)
+
+[node name="Player" parent="Scene2D" instance=ExtResource("2_74ncs")]
+position = Vector2(644, 344)
+
+[node name="GolemSpawner" type="Node" parent="Scene2D"]
+script = ExtResource("5_8cuo0")
+golem_scene = ExtResource("1_h7djf")

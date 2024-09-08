@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh3lbspukt74v"]
+
+[ext_resource type="PackedScene" uid="uid://cyfob7uhlklcs" path="res://scenes/obelisk.tscn" id="1_7wyas"]
+[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="1_d8bpw"]
+[ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="2_gcfk1"]
+[ext_resource type="Script" path="res://src/obelisk_timer.gd" id="4_08vs2"]
+
+[node name="ObeliskTest" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(50, 50)
+texture = ExtResource("1_d8bpw")
+
+[node name="Obelisk" parent="." instance=ExtResource("1_7wyas")]
+position = Vector2(300, 200)
+
+[node name="Player" parent="." node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_gcfk1")]
+integrate_forces_modules = [NodePath("MovementControls")]
+
+[node name="ObeliskTimer" type="Timer" parent="."]
+wait_time = 3.0
+script = ExtResource("4_08vs2")
+
+[connection signal="timeout" from="ObeliskTimer" to="ObeliskTimer" method="_on_timeout"]

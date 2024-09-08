@@ -1,33 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddc0tonn1xll2"]
+[gd_scene load_steps=3 format=3 uid="uid://ddc0tonn1xll2"]
 
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="1_6r2h2"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d4cqm"]
-
-[sub_resource type="Sky" id="Sky_a62f6"]
-sky_material = SubResource("ProceduralSkyMaterial_d4cqm")
-
-[sub_resource type="Environment" id="Environment_3jul7"]
-background_mode = 2
-sky = SubResource("Sky_a62f6")
-
-[sub_resource type="BoxMesh" id="BoxMesh_wy7ie"]
+[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="1_26nf6"]
 
 [node name="Main" type="Node"]
 
-[node name="Scene3D" type="Node3D" parent="."]
+[node name="Scene2D" type="Node2D" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene3D"]
-environment = SubResource("Environment_3jul7")
+[node name="Icon" type="Sprite2D" parent="Scene2D"]
+position = Vector2(470, 168)
+texture = ExtResource("1_26nf6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene3D"]
-mesh = SubResource("BoxMesh_wy7ie")
-skeleton = NodePath("../..")
+[node name="Icon2" type="Sprite2D" parent="Scene2D"]
+position = Vector2(343, 734)
+texture = ExtResource("1_26nf6")
 
-[node name="Camera3D" type="Camera3D" parent="Scene3D"]
-transform = Transform3D(0.782608, -0.224103, 0.580777, 0, 0.932954, 0.359997, -0.622515, -0.281736, 0.730137, 2.4787, 1.32746, 2.81269)
+[node name="Icon3" type="Sprite2D" parent="Scene2D"]
+position = Vector2(1287, 829)
+texture = ExtResource("1_26nf6")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene3D"]
-transform = Transform3D(0.939746, -0.226169, 0.256367, -1.06311e-08, 0.749892, 0.661561, -0.341873, -0.621699, 0.704708, 0, 2.72115, 4.64102)
+[node name="Icon4" type="Sprite2D" parent="Scene2D"]
+position = Vector2(1435, 297)
+texture = ExtResource("1_26nf6")
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("dialog", "focused_control") instance=ExtResource("1_6r2h2")]
+dialog = NodePath("DialogBox")
+focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")

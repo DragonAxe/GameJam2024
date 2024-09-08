@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn3f2h8gbo8og"]
+
+[ext_resource type="Script" path="res://src/player.gd" id="1_60jtl"]
+[ext_resource type="Script" path="res://src/movement_controls.gd" id="2_dl7vb"]
+[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="3_ydfe4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yobk"]
+radius = 67.0298
+
+[node name="PlayerTest" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" type="RigidBody2D" parent="." node_paths=PackedStringArray("integrate_forces_modules") groups=["player"]]
+script = ExtResource("1_60jtl")
+integrate_forces_modules = [NodePath("MovementControls")]
+
+[node name="MovementControls" type="Node" parent="Player"]
+script = ExtResource("2_dl7vb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_8yobk")
+
+[node name="Icon" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_ydfe4")
