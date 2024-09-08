@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgwoiifv6a07y"]
+
+[ext_resource type="PackedScene" uid="uid://v4daba3rwpr4" path="res://scenes/background_blur.tscn" id="1_qcx6b"]
+[ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="2_whgov"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_jqjs6"]
+
+[sub_resource type="Texture2D" id="Texture2D_56140"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_jqjs6")
+path = "pause_unpause"
+show_mode = 0
+force_type = 0
+
+[node name="DeathUI" type="CanvasLayer"]
+visible = false
+
+[node name="BackgroundBlur" parent="." instance=ExtResource("1_qcx6b")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_whgov")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "~ Game Over ~"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Press "
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_56140")
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " to restart"

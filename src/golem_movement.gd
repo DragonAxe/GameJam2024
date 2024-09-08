@@ -77,12 +77,13 @@ func rest() -> void:
     rest_cooldown = get_tree().create_timer(randf() * 4 + 0.5)
     var _ignore: int = rest_cooldown.timeout.connect(rest_timeout)
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
-  var player_distance: float = player.global_position.distance_to(parent.global_position)
-  if player_distance < 500:
-    rest_cooldown.timeout.disconnect(rest_timeout)
-    rest_cooldown = null
-    ai_state = AiState.FOLLOW_PLAYER
-    discovery_sound.play()
+  if player:
+    var player_distance: float = player.global_position.distance_to(parent.global_position)
+    if player_distance < 500:
+      rest_cooldown.timeout.disconnect(rest_timeout)
+      rest_cooldown = null
+      ai_state = AiState.FOLLOW_PLAYER
+      discovery_sound.play()
 func rest_timeout() -> void:
   rest_cooldown = null
   ai_state = AiState.RANDOM_PATROL
@@ -100,18 +101,20 @@ func random_patrol_wait() -> void:
   if navigation_agent.is_navigation_finished():
     ai_state = AiState.REST
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
-  var player_distance: float = player.global_position.distance_to(parent.global_position)
-  if player_distance < discovery_distance:
-      ai_state = AiState.FOLLOW_PLAYER
-      discovery_sound.play()
+  if player:
+    var player_distance: float = player.global_position.distance_to(parent.global_position)
+    if player_distance < discovery_distance:
+        ai_state = AiState.FOLLOW_PLAYER
+        discovery_sound.play()
   
   
 func follow_player() -> void:
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
-  set_movement_target(player.global_position)
-  var player_distance: float = player.global_position.distance_to(parent.global_position)
-  if player_distance > discovery_distance:
-    ai_state = AiState.RANDOM_PATROL
+  if player:
+    set_movement_target(player.global_position)
+    var player_distance: float = player.global_position.distance_to(parent.global_position)
+    if player_distance > discovery_distance:
+      ai_state = AiState.RANDOM_PATROL
 
 
 func set_movement_target(movement_target: Vector2) -> void:

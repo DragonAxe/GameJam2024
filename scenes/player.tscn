@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://coo4otvenrtfh"]
+[gd_scene load_steps=12 format=3 uid="uid://coo4otvenrtfh"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_l3klf"]
 [ext_resource type="Script" path="res://src/movement_controls.gd" id="2_1px6n"]
 [ext_resource type="Script" path="res://src/player_health.gd" id="4_gvs2c"]
 [ext_resource type="Script" path="res://src/grab_controls.gd" id="4_l8q7e"]
 [ext_resource type="Texture2D" uid="uid://n5sdg4gwapi5" path="res://textures/guy.png" id="5_2mb5v"]
+[ext_resource type="Script" path="res://src/death_sequence.gd" id="5_tr6cu"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="6_u5p12"]
+[ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="6_ypaaa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0twys"]
 radius = 44.0
@@ -31,6 +33,12 @@ grab_area = NodePath("../GrabArea")
 
 [node name="PlayerHealth" type="Node" parent="." groups=["player_health"]]
 script = ExtResource("4_gvs2c")
+
+[node name="DeathSequence" type="Node" parent="." node_paths=PackedStringArray("health_node", "camera")]
+script = ExtResource("5_tr6cu")
+health_node = NodePath("../PlayerHealth")
+golem_scene = ExtResource("6_ypaaa")
+camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
