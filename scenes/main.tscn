@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b3pfcb7i1apvp" path="res://textures/level_layout_blocking.png" id="1_hj0ty"]
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="2_tjvhw"]
 [ext_resource type="PackedScene" uid="uid://cyfob7uhlklcs" path="res://scenes/obelisk.tscn" id="3_a11kn"]
-[ext_resource type="PackedScene" uid="uid://crhu1tn6dqxvq" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
+[ext_resource type="PackedScene" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
 vertices = PackedVector2Array(2495, 2654, 6345.62, 6367.53, -6356.84, 6332.46, 1226, 2654, 6392.37, -6369.46, 2495, 1318, -6345.15, -6404.53, 1842, 1172, 1842, 1318, 258, 1172, -103, 1115.01, 258, 2104, -103, 2104, -563, 1115.01, -563, 2555, 716, 2555, 1226, 1654, 716, 1654)
@@ -82,35 +82,47 @@ position = Vector2(1711, -1420)
 [node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
 position = Vector2(2044, 198)
 
-[node name="Player" parent="Scene2D" instance=ExtResource("1_btsov")]
+[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_btsov")]
+linear_damp = 0.0
+integrate_forces_modules = [NodePath("MovementControls")]
 
 [node name="Golems" type="Node2D" parent="Scene2D"]
 
-[node name="Golem" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(-1276, -961)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem2" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem2" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(-295, -1279)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem3" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem3" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(1019, -1431)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem4" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem4" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(2140, -348)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem5" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem5" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(1930, 1319)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem6" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem6" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(114, 1756)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem7" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem7" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(-981, 1271)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem8" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+[node name="Golem8" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
 position = Vector2(-1791, 334)
+integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("dialog", "focused_control") instance=ExtResource("1_6r2h2")]
 visible = false
+dialog = NodePath("DialogBox")
+focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
 
 [node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]
