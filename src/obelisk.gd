@@ -16,7 +16,7 @@ var particles : Array[Node2D]
 var pulsed : bool = false
 var pulse_active : bool = false
 var current_radius : float
-var power_duration : float
+var power_duration : float # gets set to obelisk.power_duration by obelisk_timer
 
 var golems : Array[Golem]
 
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
   for golem : Golem in golems:
     var distance_to_golem : float = golem.position.distance_to(position)
     if distance_to_golem < current_radius + pulse_thickness / 2 and distance_to_golem > current_radius - pulse_thickness / 2:
-      golem.power_up(power_type, power_duration)
+      golem.power_up(power_type, power_duration / 2)
 
 func update_pulse_wave(frac: float) -> void:
   for i : int in range(len(particles)):

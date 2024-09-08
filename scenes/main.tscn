@@ -172,7 +172,7 @@ position = Vector2(2044, 198)
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="ObeliskTimer" type="Timer" parent="Scene2D/Obelisks"]
-wait_time = 3.0
+wait_time = 4.0
 script = ExtResource("6_o3nlv")
 
 [node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_btsov")]

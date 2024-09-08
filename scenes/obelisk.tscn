@@ -13,7 +13,7 @@ polygon = PackedVector2Array(-56, 59, 55, 56, 54, -61, -58, -56)
 [node name="Obelisk" type="Node2D" node_paths=PackedStringArray("collision_shapes") groups=["obelisk"]]
 script = ExtResource("1_snr1n")
 particle_count = 25
-pulse_distance = 1000.0
+pulse_distance = 1500.0
 pulse_thickness = 200.0
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
