@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
       
     AiState.FOLLOW_PLAYER:
       follow_player()
-      parent.modulate = Color.SKY_BLUE
+      parent.modulate = Color.RED
 
 
   # Walk there
@@ -87,7 +87,6 @@ func random_patrol() -> void:
     navigation_agent.get_navigation_map(), 1, false
   )
   set_movement_target(random_point)
-  print("New point: " + str(random_point))
   ai_state = AiState.RANDOM_PATROL_WAIT
 
 
