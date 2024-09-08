@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddc0tonn1xll2"]
+[gd_scene load_steps=14 format=3 uid="uid://ddc0tonn1xll2"]
 
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="1_6r2h2"]
 [ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="1_btsov"]
 [ext_resource type="Texture2D" uid="uid://b3pfcb7i1apvp" path="res://textures/level_layout_blocking.png" id="1_hj0ty"]
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="2_tjvhw"]
+[ext_resource type="PackedScene" path="res://scenes/hag_stone.tscn" id="3_6o678"]
 [ext_resource type="PackedScene" uid="uid://cyfob7uhlklcs" path="res://scenes/obelisk.tscn" id="3_a11kn"]
 [ext_resource type="PackedScene" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
 
@@ -71,7 +72,7 @@ position = Vector2(1219, 1153)
 position = Vector2(-1590, 888)
 
 [node name="Obelisk3" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
-position = Vector2(-2003, -875)
+position = Vector2(-1495, -616)
 
 [node name="Obelisk4" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
 position = Vector2(-592, -1752)
@@ -82,8 +83,33 @@ position = Vector2(1711, -1420)
 [node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
 position = Vector2(2044, 198)
 
+[node name="HagStones" type="Node2D" parent="Scene2D"]
+
+[node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+position = Vector2(-523, -496)
+snap_area = NodePath("SnapArea")
+
+[node name="HagStone2" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+position = Vector2(-313, -965)
+snap_area = NodePath("SnapArea")
+
+[node name="HagStone3" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+position = Vector2(215, -1044)
+snap_area = NodePath("SnapArea")
+
+[node name="HagStone4" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+position = Vector2(519, -572)
+snap_area = NodePath("SnapArea")
+
+[node name="HagStone5" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+position = Vector2(323, -177)
+snap_area = NodePath("SnapArea")
+
+[node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+position = Vector2(-246, -105)
+snap_area = NodePath("SnapArea")
+
 [node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_btsov")]
-linear_damp = 0.0
 integrate_forces_modules = [NodePath("MovementControls")]
 
 [node name="Golems" type="Node2D" parent="Scene2D"]
