@@ -16,6 +16,7 @@ integrate_forces_modules = [NodePath("GolemMovement")]
 
 [node name="DiscoverySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_6tnob")
+volume_db = 5.0
 
 [node name="GolemMovement" type="Node" parent="." node_paths=PackedStringArray("discovery_sound", "navigation_agent")]
 script = ExtResource("2_v0qo3")
@@ -35,6 +36,7 @@ one_shot = true
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="GolemAttack"]
 stream = ExtResource("4_bsebh")
+volume_db = -10.0
 pitch_scale = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
