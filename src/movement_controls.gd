@@ -2,6 +2,7 @@ extends Node
 
 @onready var parent: RigidBody2D = get_parent()
 
+var self_control: bool = true
 
 func _physics_process(delta: float) -> void:
   var player_vector: Vector2 = Input.get_vector(
@@ -22,14 +23,14 @@ func integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     var target_angle : float = lerp_angle(parent.rotation, player_angle + PI / 2, 0.25)
     parent.rotation = target_angle
 
-func power_up(power_type: Obelisk.PowerType) -> void:
+func power_up(power_type: Obelisk.PowerType, vector_away: Vector2) -> void:
   if power_type == Obelisk.PowerType.SLOW:
     print("power up (slow)")
   if power_type == Obelisk.PowerType.REPULSE:
-    print("power up (repulse)")
+    parent.linear_velocity += vector_away * 8000
 
 func power_down(power_type: Obelisk.PowerType) -> void:
   if power_type == Obelisk.PowerType.SLOW:
     print("power down... (slow)")
   if power_type == Obelisk.PowerType.REPULSE:
-    print("power down... (repulse)")
+    self_control = true

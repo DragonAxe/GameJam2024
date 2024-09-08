@@ -42,9 +42,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
   for golem : Golem in golems:
     if within_pulse_band(golem):
-      golem.power_up(power_type, power_duration / 2)
+      golem.power_up(power_type, power_duration / 2, position.direction_to(golem.position))
   if within_pulse_band(player):
-    player.power_up(power_type, power_duration / 2)
+    player.power_up(power_type, power_duration / 2, position.direction_to(player.position))
 
 func within_pulse_band(node : Node2D) -> bool:
   var distance_to_node : float = node.position.distance_to(position)

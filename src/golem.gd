@@ -10,10 +10,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
     assert(module.has_method("integrate_forces"))
     module.call("integrate_forces", state)
 
-func power_up(power_type : Obelisk.PowerType, power_duration : float) -> void:
+func power_up(power_type : Obelisk.PowerType, power_duration : float, vector_away : Vector2) -> void:
   if power_type == Obelisk.PowerType.FAST:
     assert(power_up_timer_fast.has_method("power_up"))
-    power_up_timer_fast.call("power_up", power_duration)
+    power_up_timer_fast.call("power_up", power_duration, null)
   elif power_type == Obelisk.PowerType.SENSORY:
     assert(power_up_timer_sensory.has_method("power_up"))
-    power_up_timer_sensory.call("power_up", power_duration)
+    power_up_timer_sensory.call("power_up", power_duration, vector_away)
