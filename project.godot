@@ -146,3 +146,4 @@ player_grab_release={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.333333, 0.305882, 0.32549, 1)

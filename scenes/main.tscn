@@ -43,6 +43,7 @@ shader_parameter/gradientTexture = SubResource("GradientTexture2D_clpyd")
 navigation_polygon = SubResource("NavigationPolygon_35uj4")
 
 [node name="LevelLayoutBlocking" type="Sprite2D" parent="Scene2D/NavigationRegion2D"]
+visible = false
 light_mask = 3
 visibility_layer = 3
 texture_filter = 1
@@ -700,28 +701,37 @@ power_up_timer_repulse = NodePath("PlayerTimer - Repulse")
 [node name="Golems" type="Node2D" parent="Scene2D"]
 
 [node name="Golem" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(-1276, -961)
+position = Vector2(-3897, 833)
 
 [node name="Golem2" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(-295, -1279)
+position = Vector2(-4347, -5129)
 
 [node name="Golem3" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(1019, -1431)
+position = Vector2(1462, -5342)
 
 [node name="Golem4" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(2140, -348)
+position = Vector2(4556, -2403)
 
 [node name="Golem5" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(1930, 1319)
+position = Vector2(2187, 3688)
 
 [node name="Golem6" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(114, 1756)
+position = Vector2(967, 1816)
 
 [node name="Golem7" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(-981, 1271)
+position = Vector2(-2347, 2321)
 
 [node name="Golem8" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
-position = Vector2(-1791, 334)
+position = Vector2(5809, 3459)
+
+[node name="Golem9" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+position = Vector2(-2346, 6088)
+
+[node name="Golem10" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+position = Vector2(1948, -3265)
+
+[node name="Golem11" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
+position = Vector2(2755, -403)
 
 [node name="ControlsHUD" parent="." instance=ExtResource("9_w43uh")]
 
