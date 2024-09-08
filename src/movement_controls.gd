@@ -32,7 +32,7 @@ func power_up(power_type: Obelisk.PowerType, vector_away: Vector2) -> void:
   if power_type == Obelisk.PowerType.SLOW:
     force_amount = force_amount_slow
   if power_type == Obelisk.PowerType.REPULSE:
-    parent.apply_central_force(vector_away * 800000)
+    parent.apply_central_force(vector_away * 500000)
 
 func power_down(power_type: Obelisk.PowerType) -> void:
   if power_type == Obelisk.PowerType.SLOW:
