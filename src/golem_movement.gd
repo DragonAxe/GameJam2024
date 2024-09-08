@@ -1,8 +1,10 @@
 class_name GolemMovement extends Node
 
 @export var movement_speed: float = 100.0
+@export var movement_speed_fast: float = 150.0
 
 @export var discovery_distance: float = 1000
+@export var discovery_distance_far: float = 3000
 
 @export_category("Sibling nodes")
 @export var discovery_sound: AudioStreamPlayer2D
@@ -11,6 +13,9 @@ class_name GolemMovement extends Node
 @export var navigation_agent: NavigationAgent2D
 
 @onready var parent: RigidBody2D = get_parent()
+
+var using_power_fast: bool = false
+var using_power_far: bool = false
 
 enum AiState {
   REST,
@@ -51,11 +56,15 @@ func _physics_process(_delta: float) -> void:
 
   # Walk there
   if not navigation_agent.is_navigation_finished():
+    var current_movement_speed: float = movement_speed
+    if using_power_fast:
+      current_movement_speed = movement_speed_fast
+
     var current_agent_position: Vector2 = parent.global_position
     next_path_position = navigation_agent.get_next_path_position()
     linear_velocity = (
       current_agent_position.direction_to(next_path_position)
-      * (movement_speed)
+      * (current_movement_speed)
     )
   else:
     linear_velocity = Vector2.ZERO
@@ -101,8 +110,12 @@ func random_patrol_wait() -> void:
     ai_state = AiState.REST
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
   if player:
+    var current_discovery_distance: float = discovery_distance
+    if using_power_far:
+      current_discovery_distance = discovery_distance_far
+
     var player_distance: float = player.global_position.distance_to(parent.global_position)
-    if player_distance < discovery_distance:
+    if player_distance < current_discovery_distance:
         ai_state = AiState.FOLLOW_PLAYER
         discovery_sound.play()
   
@@ -110,9 +123,13 @@ func random_patrol_wait() -> void:
 func follow_player() -> void:
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
   if player:
+    var current_discovery_distance: float = discovery_distance
+    if using_power_far:
+      current_discovery_distance = discovery_distance_far
+
     set_movement_target(player.global_position)
     var player_distance: float = player.global_position.distance_to(parent.global_position)
-    if player_distance > discovery_distance:
+    if player_distance > current_discovery_distance:
       ai_state = AiState.RANDOM_PATROL
 
 
@@ -127,15 +144,14 @@ func on_agent_velocity_computed(safe_velocity: Vector2) -> void:
 
 func power_up(power_type: Obelisk.PowerType, vector_away: Vector2) -> void:
   if power_type == Obelisk.PowerType.FAST:
-    print("power up (fast)")
+    using_power_fast = true
   elif power_type == Obelisk.PowerType.SENSORY:
-    print("power up (sensory)")
+    using_power_far = true
   elif power_type == Obelisk.PowerType.REPULSE:
-    print("here")
     parent.apply_central_force(vector_away * 800000)
 
 func power_down(power_type: Obelisk.PowerType) -> void:
   if power_type == Obelisk.PowerType.FAST:
-    print("power down... (fast)")
+    using_power_fast = false
   elif power_type == Obelisk.PowerType.SENSORY:
-    print("power down... (sensory)")
+    using_power_far = false

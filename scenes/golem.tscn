@@ -28,7 +28,9 @@ volume_db = 5.0
 
 [node name="GolemMovement" type="Node" parent="." node_paths=PackedStringArray("discovery_sound", "navigation_agent")]
 script = ExtResource("2_v0qo3")
+movement_speed_fast = 400.0
 discovery_distance = 2000.0
+discovery_distance_far = 10000.0
 discovery_sound = NodePath("../DiscoverySound")
 navigation_agent = NodePath("../NavigationAgent2D")
 
