@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dad5ajogivob8"]
+[gd_scene load_steps=3 format=3 uid="uid://dad5ajogivob8"]
 
-[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="1_of3wj"]
+[sub_resource type="Gradient" id="Gradient_4h2dc"]
+offsets = PackedFloat32Array(0, 0.518987, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.333333, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5pme7"]
+gradient = SubResource("Gradient_4h2dc")
 
 [node name="Particle" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_of3wj")
+rotation = 1.5708
+texture = SubResource("GradientTexture2D_5pme7")
