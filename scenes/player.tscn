@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7yvuanblqci0"]
+[gd_scene load_steps=8 format=3 uid="uid://c7yvuanblqci0"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_l3klf"]
 [ext_resource type="Script" path="res://src/movement_controls.gd" id="2_1px6n"]
 [ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="3_13m2u"]
+[ext_resource type="Script" path="res://src/player_health.gd" id="4_gvs2c"]
 [ext_resource type="Script" path="res://src/grab_controls.gd" id="4_l8q7e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7xuq"]
@@ -22,6 +23,9 @@ script = ExtResource("2_1px6n")
 [node name="GrabControl" type="Node" parent="." node_paths=PackedStringArray("grab_area")]
 script = ExtResource("4_l8q7e")
 grab_area = NodePath("../GrabArea")
+
+[node name="PlayerHealth" type="Node" parent="." groups=["player_health"]]
+script = ExtResource("4_gvs2c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

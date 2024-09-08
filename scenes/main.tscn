@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddc0tonn1xll2"]
+[gd_scene load_steps=13 format=3 uid="uid://ddc0tonn1xll2"]
 
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="1_6r2h2"]
 [ext_resource type="PackedScene" uid="uid://c7yvuanblqci0" path="res://scenes/player.tscn" id="1_btsov"]
 [ext_resource type="Texture2D" uid="uid://b3pfcb7i1apvp" path="res://textures/level_layout_blocking.png" id="1_hj0ty"]
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="2_tjvhw"]
 [ext_resource type="PackedScene" path="res://scenes/obelisk.tscn" id="3_a11kn"]
+[ext_resource type="PackedScene" uid="uid://crhu1tn6dqxvq" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
 vertices = PackedVector2Array(2335, 2452, 6505.03, 6527.97, -6516.99, 6492.02, 1376, 2452, 6552.96, -6529.02, 2335, 1460, -6505, -6564.97, 1682, 1332, 1682, 1460, 418, 1332, -263, 1275, 418, 2264, -263, 2264, -403, 1275, -403, 2395, 556, 2395, 1376, 1494, 556, 1494)
@@ -106,8 +107,4 @@ position = Vector2(2044, 198)
 [node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
 visible = false
 
-[node name="HealthUI" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" type="ProgressBar" parent="HealthUI"]
-offset_right = 4.0
-offset_bottom = 27.0
+[node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]
