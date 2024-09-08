@@ -1,8 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1k8l6nlewfao"]
+[gd_scene load_steps=5 format=3 uid="uid://yballovg0lro"]
 
-[ext_resource type="Script" path="res://src/win_tracker.gd" id="1_8rasu"]
 [ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="2_wawuw"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_pnqj8"]
+
+[sub_resource type="GDScript" id="GDScript_o61t2"]
+script/source = "class_name WinTracker extends CanvasLayer
+
+@export_category(\"Scene Internal Nodes\")
+@export var dialog: Control
+
+var completed_obelisk_count: int = 0
+var obelisk_count: int = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+  dialog.visible = false
+
+  for obelisk : Obelisk in get_tree().get_nodes_in_group(\"obelisk\"):
+    obelisk.set_win_tracker(self)
+    obelisk_count = obelisk_count + 1
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+  pass
+
+func increment() -> void:
+  completed_obelisk_count = completed_obelisk_count + 1
+  if completed_obelisk_count == obelisk_count:
+    dialog.visible = true
+"
 
 [sub_resource type="Texture2D" id="Texture2D_vj1sf"]
 resource_local_to_scene = false
@@ -13,7 +40,7 @@ show_mode = 0
 force_type = 0
 
 [node name="WinTracker" type="CanvasLayer" node_paths=PackedStringArray("dialog")]
-script = ExtResource("1_8rasu")
+script = SubResource("GDScript_o61t2")
 dialog = NodePath("MarginContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
