@@ -11,7 +11,6 @@ func power_up(power_duration : float, vector_away : Vector2) -> void:
   start(power_duration)
   assert(movement.has_method("power_up"))
   movement.call("power_up", power_type, vector_away)
-  print(power_duration)
   empowered = true
 
 func _on_timeout() -> void:

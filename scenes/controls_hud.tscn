@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://6hwias58wtrr"]
+
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="1_0exav"]
+[ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="1_dkn6l"]
+
+[sub_resource type="Texture2D" id="Texture2D_8qmwb"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_0exav")
+path = "player_up"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_71ebr"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_0exav")
+path = "player_left"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_turqs"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_0exav")
+path = "player_down"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_50x86"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_0exav")
+path = "player_right"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_aeqlt"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_0exav")
+path = "player_grab_release"
+show_mode = 0
+force_type = 0
+
+[sub_resource type="Texture2D" id="Texture2D_b00wg"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_0exav")
+path = "pause_unpause"
+show_mode = 0
+force_type = 0
+
+[node name="ControlsHUD" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_dkn6l")
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Movement:"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_8qmwb")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_71ebr")
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_turqs")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_50x86")
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Pick up Obelisk:"
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_aeqlt")
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Pause:"
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_b00wg")

@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/obelisk_timer.gd" id="6_o3nlv"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="7_5r1tn"]
 [ext_resource type="PackedScene" uid="uid://dgwoiifv6a07y" path="res://scenes/death_screen.tscn" id="9_aum8w"]
+[ext_resource type="PackedScene" uid="uid://6hwias58wtrr" path="res://scenes/controls_hud.tscn" id="9_w43uh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
 outlines = Array[PackedVector2Array]([PackedVector2Array(-6515, -6575, 6563, -6539, 6515, 6538, -6527, 6502)])
@@ -719,6 +720,8 @@ position = Vector2(-981, 1271)
 
 [node name="Golem8" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-1791, 334)
+
+[node name="ControlsHUD" parent="." instance=ExtResource("9_w43uh")]
 
 [node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]
 

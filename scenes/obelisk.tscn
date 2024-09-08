@@ -15,7 +15,6 @@ script = ExtResource("1_snr1n")
 particle_count = 25
 pulse_distance = 1500.0
 pulse_thickness = 200.0
-power_type = 2
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
