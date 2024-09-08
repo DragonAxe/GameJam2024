@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://coo4otvenrtfh"]
+[gd_scene load_steps=11 format=3 uid="uid://coo4otvenrtfh"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_l3klf"]
 [ext_resource type="Script" path="res://src/movement_controls.gd" id="2_1px6n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/grab_controls.gd" id="4_l8q7e"]
 [ext_resource type="Texture2D" uid="uid://n5sdg4gwapi5" path="res://textures/guy.png" id="5_2mb5v"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="6_u5p12"]
+[ext_resource type="Script" path="res://src/player_timer.gd" id="7_lbgxc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0twys"]
 radius = 44.0
@@ -17,10 +18,12 @@ size = Vector2(120, 120)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r1a41"]
 polygon = PackedVector2Array(-35, 27, -54, 26, -61, 22, -67, 13, -69, 5, -68, -9, -63, -15, -46, -20, -36, -20, -27, -20, -24, -23, -20, -28, -15, -31, -8, -32, -4, -35, 0, -40, 3, -41, 5, -37, 8, -33, 11, -31, 17, -30, 21, -30, 25, -26, 28, -24, 32, -21, 41, -21, 50, -22, 60, -20, 65, -15, 70, -8, 71, -1, 71, 8, 69, 12, 67, 20, 61, 24, 55, 27, 46, 29, 38, 28, 30, 28, 23, 28, 19, 31, 16, 34, 11, 37, 6, 39, -1, 40, -7, 41, -12, 41, -19, 40, -23, 38, -27, 34, -30, 30)
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["player"]]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_slow", "power_up_timer_repulse") groups=["player"]]
 linear_damp = 30.0
 script = ExtResource("1_l3klf")
 integrate_forces_modules = [NodePath("MovementControls")]
+power_up_timer_slow = NodePath("PlayerTimer - Slow")
+power_up_timer_repulse = NodePath("PlayerTimer - Repulse")
 
 [node name="MovementControls" type="Node" parent="."]
 script = ExtResource("2_1px6n")
@@ -59,3 +62,16 @@ visible = false
 occluder = SubResource("OccluderPolygon2D_r1a41")
 occluder_light_mask = 2
 script = ExtResource("6_u5p12")
+
+[node name="PlayerTimer - Slow" type="Timer" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("7_lbgxc")
+movement = NodePath("../MovementControls")
+power_type = 1
+
+[node name="PlayerTimer - Repulse" type="Timer" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("7_lbgxc")
+movement = NodePath("../MovementControls")
+power_type = 2
+
+[connection signal="timeout" from="PlayerTimer - Slow" to="PlayerTimer - Slow" method="_on_timeout"]
+[connection signal="timeout" from="PlayerTimer - Repulse" to="PlayerTimer - Repulse" method="_on_timeout"]

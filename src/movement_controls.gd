@@ -21,3 +21,15 @@ func integrate_forces(state: PhysicsDirectBodyState2D) -> void:
   if player_vector != Vector2.ZERO:
     var target_angle : float = lerp_angle(parent.rotation, player_angle + PI / 2, 0.25)
     parent.rotation = target_angle
+
+func power_up(power_type: Obelisk.PowerType) -> void:
+  if power_type == Obelisk.PowerType.SLOW:
+    print("power up (slow)")
+  if power_type == Obelisk.PowerType.REPULSE:
+    print("power up (repulse)")
+
+func power_down(power_type: Obelisk.PowerType) -> void:
+  if power_type == Obelisk.PowerType.SLOW:
+    print("power down... (slow)")
+  if power_type == Obelisk.PowerType.REPULSE:
+    print("power down... (repulse)")

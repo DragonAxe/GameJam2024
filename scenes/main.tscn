@@ -175,8 +175,10 @@ collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 wait_time = 4.0
 script = ExtResource("6_o3nlv")
 
-[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_btsov")]
+[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_slow", "power_up_timer_repulse") instance=ExtResource("1_btsov")]
 integrate_forces_modules = [NodePath("MovementControls")]
+power_up_timer_slow = NodePath("PlayerTimer - Slow")
+power_up_timer_repulse = NodePath("PlayerTimer - Repulse")
 
 [node name="Golems" type="Node2D" parent="Scene2D"]
 

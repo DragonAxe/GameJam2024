@@ -13,10 +13,12 @@ texture = ExtResource("1_d8bpw")
 
 [node name="Obelisk" parent="." node_paths=PackedStringArray("collision_shapes") instance=ExtResource("1_7wyas")]
 position = Vector2(300, 200)
-collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
+collision_shapes = []
 
-[node name="Player" parent="." node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_gcfk1")]
+[node name="Player" parent="." node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_slow", "power_up_timer_repulse") instance=ExtResource("2_gcfk1")]
 integrate_forces_modules = [NodePath("MovementControls")]
+power_up_timer_slow = NodePath("PlayerTimer - Slow")
+power_up_timer_repulse = NodePath("PlayerTimer - Repulse")
 
 [node name="ObeliskTimer" type="Timer" parent="."]
 wait_time = 3.0
