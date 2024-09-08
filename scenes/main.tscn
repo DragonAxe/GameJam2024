@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://shaders/shadows.gdshader" id="6_i8nwb"]
 [ext_resource type="Script" path="res://src/obelisk_timer.gd" id="6_o3nlv"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="7_5r1tn"]
+[ext_resource type="PackedScene" uid="uid://dgwoiifv6a07y" path="res://scenes/death_screen.tscn" id="9_aum8w"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
 vertices = PackedVector2Array(2495, 2654, 6345.62, 6367.53, -6356.84, 6332.46, 1226, 2654, 6392.37, -6369.46, 2495, 1318, -6345.15, -6404.53, 1842, 1172, 1842, 1318, 258, 1172, -103, 1115.01, 258, 2104, -103, 2104, -563, 1115.01, -563, 2555, 716, 2555, 1226, 1654, 716, 1654)
@@ -232,7 +233,9 @@ power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
 [node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]
 
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("dialog", "focused_control") instance=ExtResource("1_6r2h2")]
+[node name="DeathUI" parent="." instance=ExtResource("9_aum8w")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
 visible = false
 dialog = NodePath("DialogBox")
 focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
