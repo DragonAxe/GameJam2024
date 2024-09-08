@@ -128,13 +128,14 @@ func on_agent_velocity_computed(safe_velocity: Vector2) -> void:
 func power_up(power_type: Obelisk.PowerType, vector_away: Vector2) -> void:
   if power_type == Obelisk.PowerType.FAST:
     print("power up (fast)")
-  if power_type == Obelisk.PowerType.SENSORY:
+  elif power_type == Obelisk.PowerType.SENSORY:
     print("power up (sensory)")
-  if power_type == Obelisk.PowerType.REPULSE:
+  elif power_type == Obelisk.PowerType.REPULSE:
+    print("here")
     parent.apply_central_force(vector_away * 800000)
 
 func power_down(power_type: Obelisk.PowerType) -> void:
   if power_type == Obelisk.PowerType.FAST:
     print("power down... (fast)")
-  if power_type == Obelisk.PowerType.SENSORY:
+  elif power_type == Obelisk.PowerType.SENSORY:
     print("power down... (sensory)")
