@@ -45,6 +45,7 @@ volume_db = -10.0
 pitch_scale = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, -24.5)
 shape = SubResource("RectangleShape2D_i31i5")
 
@@ -65,6 +66,7 @@ radius = 274.0
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
+visible = false
 polygon = PackedVector2Array(-96, 0, -205, -200, 202, -200, 96, 0)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

@@ -4,8 +4,13 @@ extends Node2D
 
 @export_category("Internal nodes")
 @export var snap_area: Area2D
+@export var texture_rect: TextureRect
 
 var captured: int = 0
+
+
+func _ready() -> void:
+  texture_rect.modulate = matched_obelisk.modulate
 
 
 func _physics_process(delta: float) -> void:
@@ -23,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 
 func capture_obelisk(obelisk: Obelisk) -> void:
+  obelisk.disable_collision(false)
   obelisk.get_parent().remove_child(obelisk)
   add_child(obelisk)
   obelisk.global_position = global_position

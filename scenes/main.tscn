@@ -80,26 +80,6 @@ shape = SubResource("RectangleShape2D_c1y7p")
 position = Vector2(155.042, 165.5)
 shape = SubResource("RectangleShape2D_cwjf2")
 
-[node name="Obelisks" type="Node2D" parent="Scene2D"]
-
-[node name="Obelisk" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
-position = Vector2(1219, 1153)
-
-[node name="Obelisk2" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
-position = Vector2(-1590, 888)
-
-[node name="Obelisk3" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
-position = Vector2(-1495, -616)
-
-[node name="Obelisk4" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
-position = Vector2(-592, -1752)
-
-[node name="Obelisk5" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
-position = Vector2(1711, -1420)
-
-[node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
-position = Vector2(2044, 198)
-
 [node name="HagStones" type="Node2D" parent="Scene2D"]
 
 [node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
@@ -125,6 +105,52 @@ matched_obelisk = NodePath("../../Obelisks/Obelisk5")
 [node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
 position = Vector2(-246, -105)
 matched_obelisk = NodePath("../../Obelisks/Obelisk6")
+
+[node name="Lights" type="Node2D" parent="Scene2D"]
+
+[node name="Moon" type="DirectionalLight2D" parent="Scene2D/Lights"]
+visible = false
+rotation = -0.344855
+color = Color(0.796179, 0.868654, 1, 1)
+energy = 0.3
+shadow_item_cull_mask = 2
+height = 1.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Scene2D/Lights"]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="Shadows" type="Polygon2D" parent="Scene2D/Lights"]
+visible = false
+material = SubResource("ShaderMaterial_u85xi")
+polygon = PackedVector2Array(-6973, -7316, 7945, -7299, 7775, 7517, -7244, 7686)
+script = ExtResource("7_5r1tn")
+
+[node name="Obelisks" type="Node2D" parent="Scene2D"]
+
+[node name="Obelisk" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1219, 1153)
+
+[node name="Obelisk2" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-1590, 888)
+
+[node name="Obelisk3" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(-1495, -616)
+
+[node name="Obelisk4" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-592, -1752)
+
+[node name="Obelisk5" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(1711, -1420)
+
+[node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(2044, 198)
 
 [node name="Player" parent="Scene2D" instance=ExtResource("1_btsov")]
 
@@ -154,27 +180,7 @@ position = Vector2(-981, 1271)
 [node name="Golem8" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-1791, 334)
 
-[node name="Lights" type="Node2D" parent="Scene2D"]
-
-[node name="Moon" type="DirectionalLight2D" parent="Scene2D/Lights"]
-visible = false
-rotation = -0.344855
-color = Color(0.796179, 0.868654, 1, 1)
-energy = 0.3
-shadow_item_cull_mask = 2
-height = 1.0
-
-[node name="CanvasModulate" type="CanvasModulate" parent="Scene2D/Lights"]
-visible = false
-color = Color(0, 0, 0, 1)
-
-[node name="Shadows" type="Polygon2D" parent="Scene2D/Lights"]
-visible = false
-material = SubResource("ShaderMaterial_u85xi")
-polygon = PackedVector2Array(-6973, -7316, 7945, -7299, 7775, 7517, -7244, 7686)
-script = ExtResource("7_5r1tn")
+[node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
 visible = false
-
-[node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]
