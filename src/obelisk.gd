@@ -2,6 +2,7 @@ class_name Obelisk extends Node2D
 
 @export var particle_count : int
 @export var pulse_distance : float
+@export var pulse_distance_weak : float
 @export var pulse_thickness : float
 @export var power_type : PowerType
 
@@ -10,6 +11,7 @@ class_name Obelisk extends Node2D
 
 enum PowerType { FAST, SLOW, REPULSE, SENSORY, SPAWN }
 
+var win_tracker : WinTracker
 var particle_scene : PackedScene
 var particle_texture_size : Vector2
 var particles : Array[Node2D]
@@ -17,6 +19,7 @@ var pulsed : bool = false
 var pulse_active : bool = false
 var current_radius : float
 var power_duration : float # gets set to obelisk.power_duration by obelisk_timer
+var completed : bool
 
 var golems : Array[Golem]
 
@@ -34,6 +37,7 @@ func _ready() -> void:
   particle_texture_size = (particles[0].get_children()[0] as Sprite2D).texture.get_size()
 
   golems.assign(get_tree().get_nodes_in_group("golem"))
+  completed = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,8 +58,12 @@ func within_pulse_band(node : Node2D) -> bool:
 func update_pulse_wave(frac: float) -> void:
   for i : int in range(len(particles)):
     var particle : Node2D = particles[i]
-    # r is the distance from the center
-    current_radius = pulse_distance * frac
+
+    var pulse_distance_var: float = pulse_distance
+    if not pulse_active:
+      pulse_distance_var = pulse_distance_weak
+
+    current_radius = pulse_distance_var * frac
     particle.position = Vector2(current_radius * cos(PI * 2 * i / particle_count), current_radius * sin(PI * 2 * i / particle_count))
     # s is the length of the side of a regular polygon
     var s : float = 2.15 * current_radius * sin(PI / particle_count)
@@ -86,3 +94,11 @@ func reset() -> void:
 func disable_collision(disabled: bool = true) -> void:
   for shape: CollisionShape2D in collision_shapes:
     shape.disabled = disabled
+
+func complete() -> void:
+  completed = true
+  if win_tracker:
+    win_tracker.increment()
+
+func set_win_tracker(_win_tracker: WinTracker) -> void:
+  win_tracker = _win_tracker

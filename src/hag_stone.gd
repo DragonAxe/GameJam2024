@@ -34,3 +34,4 @@ func capture_obelisk(obelisk: Obelisk) -> void:
   obelisk.global_position = global_position
   if obelisk == matched_obelisk:
     obelisk.activate_pulse(true)
+    obelisk.complete()

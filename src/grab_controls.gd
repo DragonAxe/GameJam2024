@@ -24,6 +24,8 @@ func _input(event: InputEvent) -> void:
       for obelisk_area: Area2D in obelisk_areas:
         if obelisk_area.get_parent() is Obelisk:
           var obelisk : Obelisk = obelisk_area.get_parent()
+          if obelisk.completed:
+            return
           obelisk.disable_collision()
           obelisk.get_parent().remove_child(obelisk)
           grab_area.add_child(obelisk)
