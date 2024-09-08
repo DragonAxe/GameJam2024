@@ -16,9 +16,11 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2096, -1662, -524, -15
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Scene2D"]
 navigation_polygon = SubResource("NavigationPolygon_28rws")
 
-[node name="Golem" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_h7djf")]
+[node name="Golem" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") instance=ExtResource("1_h7djf")]
 position = Vector2(-530, -218)
 integrate_forces_modules = []
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
 [node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_74ncs")]
 position = Vector2(644, 344)

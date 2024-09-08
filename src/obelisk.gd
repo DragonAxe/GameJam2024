@@ -19,7 +19,6 @@ var current_radius : float
 var power_duration : float # gets set to obelisk.power_duration by obelisk_timer
 
 var golems : Array[Golem]
-var player : Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,16 +34,16 @@ func _ready() -> void:
   particle_texture_size = (particles[0].get_children()[0] as Sprite2D).texture.get_size()
 
   golems.assign(get_tree().get_nodes_in_group("golem"))
-  player = get_tree().get_first_node_in_group("player")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+  var player: Player = get_tree().get_first_node_in_group("player")
   for golem : Golem in golems:
-    if within_pulse_band(golem):
-      golem.power_up(power_type, power_duration / 2)
-  if within_pulse_band(player):
-    player.power_up(power_type, power_duration / 2)
+    if golem and within_pulse_band(golem):
+      golem.power_up(power_type, power_duration / 2, position.direction_to(golem.position))
+  if player and within_pulse_band(player):
+    player.power_up(power_type, power_duration / 2, position.direction_to(player.position))
 
 func within_pulse_band(node : Node2D) -> bool:
   var distance_to_node : float = node.position.distance_to(position)

@@ -3,11 +3,13 @@ extends CanvasLayer
 @export_category("Scene Internal Nodes")
 @export var dialog: Control
 @export var focused_control: Control
+@export var background_blur: BackgroundBlur
 
 
 func _ready() -> void:
   visible = true
   dialog.visible = false
+  background_blur.update_visibility(false)
 
 
 func _input(event: InputEvent) -> void:
@@ -23,9 +25,11 @@ func _input(event: InputEvent) -> void:
 func resume() -> void:
   get_tree().paused = false
   dialog.visible = false
+  background_blur.update_visibility(false)
 
 
 func pause() -> void:
   focused_control.grab_focus()
   get_tree().paused = true
   dialog.visible = true
+  background_blur.update_visibility(true)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmepkjydj2b1j"]
+[gd_scene load_steps=11 format=3 uid="uid://dmepkjydj2b1j"]
 
 [ext_resource type="Script" path="res://src/pause_menu.gd" id="1_qbybr"]
-[ext_resource type="PackedScene" path="res://scenes/background_blur.tscn" id="2_ychph"]
+[ext_resource type="PackedScene" uid="uid://v4daba3rwpr4" path="res://scenes/background_blur.tscn" id="2_ychph"]
 [ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="4_4ygx5"]
+[ext_resource type="Script" path="res://src/restart_game.gd" id="5_oa2ml"]
 [ext_resource type="Script" path="res://src/quit.gd" id="5_ublbo"]
 [ext_resource type="Script" path="res://src/fullscreen.gd" id="6_6ro1y"]
 [ext_resource type="Theme" uid="uid://f4ggeqa3wevc" path="res://themes/icon_button.tres" id="7_rllgh"]
@@ -17,13 +18,15 @@ path = "pause_unpause"
 show_mode = 0
 force_type = 0
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("dialog", "focused_control") groups=["disable_escape_to_quit"]]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("dialog", "focused_control", "background_blur") groups=["disable_escape_to_quit"]]
 process_mode = 3
 script = ExtResource("1_qbybr")
 dialog = NodePath("DialogBox")
 focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
+background_blur = NodePath("BackgroundBlur")
 
 [node name="BackgroundBlur" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("2_ychph")]
+blur_modifier = 3.5
 animation_player = NodePath("AnimationPlayer")
 
 [node name="DialogBox" type="PanelContainer" parent="."]
@@ -52,7 +55,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Label" type="Label" parent="DialogBox/Dialog/Header"]
 layout_mode = 2
-text = "~  Game Jam 2024  ~"
+text = "~  Obelisk's of the Fourth City  ~"
 horizontal_alignment = 1
 
 [node name="Body" type="MarginContainer" parent="DialogBox/Dialog"]
@@ -71,6 +74,11 @@ layout_mode = 2
 text = "Quit"
 script = ExtResource("5_ublbo")
 
+[node name="Restart" type="Button" parent="DialogBox/Dialog/Body/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+script = ExtResource("5_oa2ml")
+
 [node name="Fullscreen" type="CheckButton" parent="DialogBox/Dialog/Body/VBoxContainer"]
 layout_mode = 2
 text = "Full Screen"
@@ -84,6 +92,7 @@ icon = SubResource("Texture2D_0da2w")
 script = ExtResource("9_kwxwd")
 
 [connection signal="pressed" from="DialogBox/Dialog/Body/VBoxContainer/Quit" to="DialogBox/Dialog/Body/VBoxContainer/Quit" method="quit"]
+[connection signal="pressed" from="DialogBox/Dialog/Body/VBoxContainer/Restart" to="DialogBox/Dialog/Body/VBoxContainer/Restart" method="restart_game"]
 [connection signal="toggled" from="DialogBox/Dialog/Body/VBoxContainer/Fullscreen" to="DialogBox/Dialog/Body/VBoxContainer/Fullscreen" method="on_toggled"]
 [connection signal="pressed" from="DialogBox/Dialog/Body/VBoxContainer/Resume" to="DialogBox/Dialog/Body/VBoxContainer/Resume" method="_on_pressed"]
 [connection signal="resume" from="DialogBox/Dialog/Body/VBoxContainer/Resume" to="." method="resume"]
