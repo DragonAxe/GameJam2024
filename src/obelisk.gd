@@ -41,9 +41,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
   for golem : Golem in golems:
-    if within_pulse_band(golem):
+    if golem and within_pulse_band(golem):
       golem.power_up(power_type, power_duration / 2, position.direction_to(golem.position))
-  if within_pulse_band(player):
+  if player and within_pulse_band(player):
     player.power_up(power_type, power_duration / 2, position.direction_to(player.position))
 
 func within_pulse_band(node : Node2D) -> bool:

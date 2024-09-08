@@ -27,10 +27,8 @@ func power_up(power_type: Obelisk.PowerType, vector_away: Vector2) -> void:
   if power_type == Obelisk.PowerType.SLOW:
     print("power up (slow)")
   if power_type == Obelisk.PowerType.REPULSE:
-    parent.linear_velocity += vector_away * 8000
+    parent.apply_central_force(vector_away * 800000)
 
 func power_down(power_type: Obelisk.PowerType) -> void:
-  if power_type == Obelisk.PowerType.SLOW:
-    print("power down... (slow)")
   if power_type == Obelisk.PowerType.REPULSE:
     self_control = true
