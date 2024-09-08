@@ -15,6 +15,9 @@ size = Vector2(120, 120)
 
 [node name="Obelisk" type="Node2D" groups=["obelisk"]]
 script = ExtResource("1_snr1n")
+particle_count = 25
+pulse_distance = 1000.0
+pulse_thickness = 200.0
 
 [node name="Big Particles" type="GPUParticles2D" parent="."]
 emitting = false
