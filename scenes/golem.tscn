@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i31i5"]
 size = Vector2(274, 147)
 
-[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules")]
+[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["golem"]]
 script = ExtResource("1_8frd6")
 integrate_forces_modules = [NodePath("GolemMovement")]
 

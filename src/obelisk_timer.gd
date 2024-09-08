@@ -4,6 +4,8 @@ var obelisks : Array[Obelisk]
 
 func _ready() -> void:
   obelisks.assign(get_tree().get_nodes_in_group("obelisk"))
+  for obelisk : Obelisk in obelisks:
+    obelisk.power_duration = wait_time
   _on_timeout()
 
 func _process(delta: float) -> void:
