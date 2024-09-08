@@ -11,7 +11,6 @@ class_name Obelisk extends Node2D
 
 enum PowerType { FAST, SLOW, REPULSE, SENSORY, SPAWN }
 
-var win_tracker : WinTracker
 var particle_scene : PackedScene
 var particle_texture_size : Vector2
 var particles : Array[Node2D]
@@ -97,8 +96,3 @@ func disable_collision(disabled: bool = true) -> void:
 
 func complete() -> void:
   completed = true
-  if win_tracker:
-    win_tracker.increment()
-
-func set_win_tracker(_win_tracker: WinTracker) -> void:
-  win_tracker = _win_tracker
