@@ -1,20 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://c03ibs6ruv5mp"]
+[gd_scene load_steps=8 format=3 uid="uid://c03ibs6ruv5mp"]
 
-[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="1_2gt2m"]
 [ext_resource type="Script" path="res://src/golem.gd" id="1_8frd6"]
+[ext_resource type="AudioStream" uid="uid://cpv6p38pjal12" path="res://sounds/horse-snort-95874_slow.mp3" id="2_6tnob"]
 [ext_resource type="Script" path="res://src/golem_movement.gd" id="2_v0qo3"]
 [ext_resource type="Script" path="res://src/golem_attack.gd" id="3_vl6wx"]
 [ext_resource type="AudioStream" uid="uid://b3tcbf0iisujo" path="res://sounds/stone-push-37412.mp3" id="4_bsebh"]
+[ext_resource type="Texture2D" uid="uid://x6tfqlqb4df8" path="res://textures/golem_cobined.png" id="6_nd7bd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f2jch"]
-radius = 24.1661
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i31i5"]
+size = Vector2(274, 147)
 
 [node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules")]
 script = ExtResource("1_8frd6")
 integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="GolemMovement" type="Node" parent="." node_paths=PackedStringArray("navigation_agent")]
+[node name="DiscoverySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_6tnob")
+
+[node name="GolemMovement" type="Node" parent="." node_paths=PackedStringArray("discovery_sound", "navigation_agent")]
 script = ExtResource("2_v0qo3")
+discovery_distance = 2000.0
+discovery_sound = NodePath("../DiscoverySound")
 navigation_agent = NodePath("../NavigationAgent2D")
 
 [node name="GolemAttack" type="Node" parent="." node_paths=PackedStringArray("attack_area", "attack_timer", "attack_sound")]
@@ -24,6 +30,7 @@ attack_timer = NodePath("AttackTimer")
 attack_sound = NodePath("AttackSound")
 
 [node name="AttackTimer" type="Timer" parent="GolemAttack"]
+wait_time = 0.5
 one_shot = true
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="GolemAttack"]
@@ -31,21 +38,27 @@ stream = ExtResource("4_bsebh")
 pitch_scale = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_f2jch")
+position = Vector2(2, -24.5)
+shape = SubResource("RectangleShape2D_i31i5")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 0.407246, 0.338652, 1)
-scale = Vector2(0.350569, 0.350569)
-texture = ExtResource("1_2gt2m")
+rotation = 3.14159
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_nd7bd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 50.0
+target_desired_distance = 50.0
+path_max_distance = 400.0
 avoidance_enabled = true
+radius = 274.0
 debug_enabled = true
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(-22, -1, -55, -79, 60, -79, 22, 0)
+polygon = PackedVector2Array(-96, 0, -205, -200, 202, -200, 96, 0)
 
 [connection signal="timeout" from="GolemAttack/AttackTimer" to="GolemAttack" method="on_attack_timer_timeout"]

@@ -21,5 +21,7 @@ func on_attack_timer_timeout() -> void:
     if body.is_in_group("player"):
       var player: RigidBody2D = body
       var vector_to_player: Vector2 = player.global_position - parent.global_position
-      player.apply_central_impulse(vector_to_player.normalized() * 1000)
-      attack_sound.play()
+      player.apply_central_impulse(vector_to_player.normalized() * 10000)
+      attack_sound.play(1)
+      var player_health: PlayerHealth = get_tree().get_nodes_in_group("player_health")[0]
+      player_health.health -= 0.1

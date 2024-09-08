@@ -13,7 +13,6 @@ var pulsed : bool = false
 func _ready() -> void:
   particle_scene = preload("res://scenes/particle.tscn")
   for i : int in range(particle_count):
-    print("here")
     var particle : Node2D = particle_scene.instantiate()
     add_child(particle)
     particles.append(particle)
