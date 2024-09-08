@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6mobrh06mec4"]
+
+[ext_resource type="Texture2D" uid="uid://cd85rajhdu1uy" path="res://textures/wall3.png" id="1_b8c6r"]
+
+[node name="Wall3" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-42, -35, -142, -30, -139, 48, -116, 69, -79, 34, -7, 135, 82, 17, 173, 17, 177, -73, 116, -21, 90, -43)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 68)
+texture = ExtResource("1_b8c6r")
