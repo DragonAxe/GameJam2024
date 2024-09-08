@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cti5ptordy7j0"]
+
+[ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="1_mkr1w"]
+[ext_resource type="Script" path="res://src/win_ui.gd" id="1_rord6"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_kdigc"]
+
+[sub_resource type="Texture2D" id="Texture2D_rh4qm"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_kdigc")
+path = "pause_unpause"
+show_mode = 0
+force_type = 0
+
+[node name="WinUI" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_rord6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mkr1w")
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "~ You Win ~"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.621524, 0.621524, 0.621524, 1)
+theme_override_font_sizes/font_size = 24
+text = "The Golem's have been restored to their rightful mind. Researchers can now examine the ruins of the Fourth City without fear of attack from its former protectors"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Press "
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_rh4qm")
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " to restart"
