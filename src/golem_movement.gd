@@ -24,7 +24,6 @@ var linear_velocity: Vector2 = Vector2.ZERO
 var safe_linear_velocity: Vector2 = Vector2.ZERO
 var next_path_position: Vector2 = Vector2.ZERO
 
-
 func _ready() -> void:
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
   set_movement_target.call_deferred(player.global_position)
@@ -125,3 +124,15 @@ func set_movement_target(movement_target: Vector2) -> void:
 
 func on_agent_velocity_computed(safe_velocity: Vector2) -> void:
   safe_linear_velocity = safe_velocity
+
+func power_up(power_type: Obelisk.PowerType) -> void:
+  if power_type == Obelisk.PowerType.FAST:
+    print("power up (fast)")
+  if power_type == Obelisk.PowerType.SENSORY:
+    print("power up (sensory)")
+
+func power_down(power_type: Obelisk.PowerType) -> void:
+  if power_type == Obelisk.PowerType.FAST:
+    print("power down... (fast)")
+  if power_type == Obelisk.PowerType.SENSORY:
+    print("power down... (sensory)")

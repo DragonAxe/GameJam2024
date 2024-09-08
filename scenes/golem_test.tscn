@@ -20,8 +20,9 @@ navigation_polygon = SubResource("NavigationPolygon_28rws")
 position = Vector2(-530, -218)
 integrate_forces_modules = []
 
-[node name="Player" parent="Scene2D" instance=ExtResource("2_74ncs")]
+[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_74ncs")]
 position = Vector2(644, 344)
+integrate_forces_modules = [NodePath("MovementControls")]
 
 [node name="GolemSpawner" type="Node" parent="Scene2D"]
 script = ExtResource("5_8cuo0")

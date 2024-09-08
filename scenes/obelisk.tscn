@@ -1,16 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyfob7uhlklcs"]
+[gd_scene load_steps=6 format=3 uid="uid://cyfob7uhlklcs"]
 
 [ext_resource type="Script" path="res://src/obelisk.gd" id="1_snr1n"]
-[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="2_hkmar"]
 [ext_resource type="Texture2D" uid="uid://d03fx6ehgp881" path="res://textures/obelisk1.png" id="3_4gb62"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="4_b01or"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xgnoi"]
-particle_flag_disable_z = true
-direction = Vector3(1, 1, 0)
-spread = 180.0
-initial_velocity_min = 1000.0
-initial_velocity_max = 1000.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djdbp"]
 size = Vector2(120, 120)
@@ -21,48 +13,9 @@ polygon = PackedVector2Array(-56, 59, 55, 56, 54, -61, -58, -56)
 [node name="Obelisk" type="Node2D" node_paths=PackedStringArray("collision_shapes") groups=["obelisk"]]
 script = ExtResource("1_snr1n")
 particle_count = 25
-pulse_distance = 1000.0
+pulse_distance = 1500.0
 pulse_thickness = 200.0
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
-
-[node name="Big Particles" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_xgnoi")
-texture = ExtResource("2_hkmar")
-lifetime = 2.0
-one_shot = true
-speed_scale = 0.5
-explosiveness = 1.0
-randomness = 0.98
-collision_base_size = 0.0
-draw_order = 0
-
-[node name="Medium Particles" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_xgnoi")
-texture = ExtResource("2_hkmar")
-lifetime = 2.0
-one_shot = true
-speed_scale = 0.5
-explosiveness = 1.0
-randomness = 0.98
-collision_base_size = 0.0
-draw_order = 0
-
-[node name="Small Particles" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_xgnoi")
-texture = ExtResource("2_hkmar")
-lifetime = 2.0
-one_shot = true
-speed_scale = 0.5
-explosiveness = 1.0
-randomness = 0.98
-collision_base_size = 0.0
-draw_order = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

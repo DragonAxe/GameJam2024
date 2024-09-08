@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c03ibs6ruv5mp"]
+[gd_scene load_steps=11 format=3 uid="uid://c03ibs6ruv5mp"]
 
 [ext_resource type="Script" path="res://src/golem.gd" id="1_8frd6"]
 [ext_resource type="AudioStream" uid="uid://cpv6p38pjal12" path="res://sounds/horse-snort-95874_slow.mp3" id="2_6tnob"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b3tcbf0iisujo" path="res://sounds/stone-push-37412.mp3" id="4_bsebh"]
 [ext_resource type="Texture2D" uid="uid://x6tfqlqb4df8" path="res://textures/golem_cobined.png" id="6_nd7bd"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="7_eoe6g"]
+[ext_resource type="Script" path="res://src/golem_timer.gd" id="8_lhdtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i31i5"]
 size = Vector2(274, 147)
@@ -14,10 +15,11 @@ size = Vector2(274, 147)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xwcks"]
 polygon = PackedVector2Array(-101, 37, -118, -8, -115, -13, -142, -72, -134, -92, -101, -104, -101, -97, -86, -79, -94, -73, -89, -71, -82, -74, -80, -70, -93, -51, -96, -40, -83, -42, -73, -40, -62, -34, -57, -49, -50, -61, -47, -68, -49, -74, -33, -73, -35, -68, -16, -69, -11, -61, -6, -50, -4, -42, 8, -46, 13, -54, 11, -59, 18, -72, 26, -74, 40, -74, 47, -74, 44, -69, 56, -64, 61, -58, 59, -50, 68, -47, 68, -47, 84, -46, 96, -41, 96, -47, 86, -59, 78, -73, 83, -75, 87, -72, 92, -75, 92, -77, 86, -80, 89, -86, 102, -98, 97, -103, 99, -106, 122, -100, 133, -93, 140, -81, 142, -74, 117, -17, 120, -9, 95, 41, 49, 57, 0, 37, -32, 55, -40, 54)
 
-[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules", "movement") groups=["golem"]]
+[node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_fast", "power_up_timer_sensory") groups=["golem"]]
 script = ExtResource("1_8frd6")
 integrate_forces_modules = [NodePath("GolemMovement")]
-movement = NodePath("GolemMovement")
+power_up_timer_fast = NodePath("GolemTimer - Fast")
+power_up_timer_sensory = NodePath("GolemTimer - Sensory")
 
 [node name="DiscoverySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_6tnob")
@@ -74,5 +76,14 @@ visible = false
 occluder = SubResource("OccluderPolygon2D_xwcks")
 occluder_light_mask = 2
 script = ExtResource("7_eoe6g")
+
+[node name="GolemTimer - Fast" type="Timer" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("8_lhdtn")
+movement = NodePath("../GolemMovement")
+
+[node name="GolemTimer - Sensory" type="Timer" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("8_lhdtn")
+movement = NodePath("../GolemMovement")
+power_type = 3
 
 [connection signal="timeout" from="GolemAttack/AttackTimer" to="GolemAttack" method="on_attack_timer_timeout"]
