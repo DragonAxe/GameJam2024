@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://benaq4rv7q3m4"]
+[gd_scene load_steps=5 format=3 uid="uid://benaq4rv7q3m4"]
 
 [ext_resource type="Texture2D" uid="uid://biisv5ww60x4n" path="res://textures/wall2.png" id="1_5xv4g"]
 
@@ -7,6 +7,9 @@ size = Vector2(981, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3a21q"]
 size = Vector2(76, 42)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7wga2"]
+polygon = PackedVector2Array(-460, -97, 328, -88, 377, -67, 397, -80, 424, -69, 456, -89, 452, -40, 190, -46, 148, -69, 84, -38, 37, -38, 16, -55, -310, -46, -337, -65, -350, -48, -416, -54)
 
 [node name="Wall2" type="StaticBody2D"]
 
@@ -20,3 +23,6 @@ shape = SubResource("RectangleShape2D_3a21q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5xv4g")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_7wga2")
