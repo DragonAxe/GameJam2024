@@ -8,24 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://crhu1tn6dqxvq" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
-vertices = PackedVector2Array(2335, 2452, 6505.03, 6527.97, -6516.99, 6492.02, 1376, 2452, 6552.96, -6529.02, 2335, 1460, -6505, -6564.97, 1682, 1332, 1682, 1460, 418, 1332, -263, 1275, 418, 2264, -263, 2264, -403, 1275, -403, 2395, 556, 2395, 1376, 1494, 556, 1494)
+vertices = PackedVector2Array(2495, 2654, 6345.62, 6367.53, -6356.84, 6332.46, 1226, 2654, 6392.37, -6369.46, 2495, 1318, -6345.15, -6404.53, 1842, 1172, 1842, 1318, 258, 1172, -103, 1115.01, 258, 2104, -103, 2104, -563, 1115.01, -563, 2555, 716, 2555, 1226, 1654, 716, 1654)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(5, 8, 7), PackedInt32Array(6, 7, 9, 10), PackedInt32Array(9, 11, 12, 10), PackedInt32Array(6, 10, 13), PackedInt32Array(2, 6, 13, 14), PackedInt32Array(3, 2, 14, 15), PackedInt32Array(16, 3, 15, 17)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-6515, -6575, 6563, -6539, 6515, 6538, -6527, 6502)])
+agent_radius = 170.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fi8c"]
-size = Vector2(10, 91.6667)
+size = Vector2(10, 82.333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og1l8"]
 size = Vector2(78.25, 9.25001)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3q23"]
-size = Vector2(9.83333, 86.9167)
+size = Vector2(9.83333, 65.4167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1y7p"]
 size = Vector2(103.667, 11.8333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwjf2"]
-size = Vector2(78.25, 81)
+size = Vector2(77.4167, 83)
 
 [node name="Main" type="Node"]
 
@@ -35,13 +36,14 @@ size = Vector2(78.25, 81)
 navigation_polygon = SubResource("NavigationPolygon_35uj4")
 
 [node name="LevelLayoutBlocking" type="Sprite2D" parent="Scene2D/NavigationRegion2D"]
+texture_filter = 1
 scale = Vector2(12, 12)
 texture = ExtResource("1_hj0ty")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Scene2D/NavigationRegion2D/LevelLayoutBlocking"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene2D/NavigationRegion2D/LevelLayoutBlocking/StaticBody2D"]
-position = Vector2(-27.75, 152.917)
+position = Vector2(-27.75, 148.25)
 shape = SubResource("RectangleShape2D_5fi8c")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Scene2D/NavigationRegion2D/LevelLayoutBlocking/StaticBody2D"]
@@ -49,7 +51,7 @@ position = Vector2(6.375, 194.125)
 shape = SubResource("RectangleShape2D_og1l8")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Scene2D/NavigationRegion2D/LevelLayoutBlocking/StaticBody2D"]
-position = Vector2(40.5833, 155.292)
+position = Vector2(40.5833, 156.625)
 shape = SubResource("RectangleShape2D_w3q23")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Scene2D/NavigationRegion2D/LevelLayoutBlocking/StaticBody2D"]
@@ -57,52 +59,56 @@ position = Vector2(87.5, 117.75)
 shape = SubResource("RectangleShape2D_c1y7p")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Scene2D/NavigationRegion2D/LevelLayoutBlocking/StaticBody2D"]
-position = Vector2(154.625, 163)
+position = Vector2(155.042, 165.5)
 shape = SubResource("RectangleShape2D_cwjf2")
+
+[node name="Obelisks" type="Node2D" parent="Scene2D"]
+
+[node name="Obelisk" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+position = Vector2(1219, 1153)
+
+[node name="Obelisk2" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+position = Vector2(-1590, 888)
+
+[node name="Obelisk3" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+position = Vector2(-2003, -875)
+
+[node name="Obelisk4" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+position = Vector2(-592, -1752)
+
+[node name="Obelisk5" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+position = Vector2(1711, -1420)
+
+[node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+position = Vector2(2044, 198)
 
 [node name="Player" parent="Scene2D" instance=ExtResource("1_btsov")]
 
-[node name="Golem" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golems" type="Node2D" parent="Scene2D"]
+
+[node name="Golem" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-1276, -961)
 
-[node name="Golem2" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golem2" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-295, -1279)
 
-[node name="Golem3" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golem3" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(1019, -1431)
 
-[node name="Golem4" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golem4" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(2140, -348)
 
-[node name="Golem5" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golem5" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(1930, 1319)
 
-[node name="Golem6" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golem6" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(114, 1756)
 
-[node name="Golem7" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golem7" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-981, 1271)
 
-[node name="Golem8" parent="Scene2D" instance=ExtResource("2_tjvhw")]
+[node name="Golem8" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-1791, 334)
-
-[node name="Obelisk" parent="Scene2D" instance=ExtResource("3_a11kn")]
-position = Vector2(1219, 1153)
-
-[node name="Obelisk2" parent="Scene2D" instance=ExtResource("3_a11kn")]
-position = Vector2(-1590, 888)
-
-[node name="Obelisk3" parent="Scene2D" instance=ExtResource("3_a11kn")]
-position = Vector2(-2003, -875)
-
-[node name="Obelisk4" parent="Scene2D" instance=ExtResource("3_a11kn")]
-position = Vector2(-592, -1752)
-
-[node name="Obelisk5" parent="Scene2D" instance=ExtResource("3_a11kn")]
-position = Vector2(1711, -1420)
-
-[node name="Obelisk6" parent="Scene2D" instance=ExtResource("3_a11kn")]
-position = Vector2(2044, 198)
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
 visible = false
