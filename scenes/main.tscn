@@ -80,6 +80,32 @@ shape = SubResource("RectangleShape2D_c1y7p")
 position = Vector2(155.042, 165.5)
 shape = SubResource("RectangleShape2D_cwjf2")
 
+[node name="HagStones" type="Node2D" parent="Scene2D"]
+
+[node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+position = Vector2(-523, -496)
+matched_obelisk = NodePath("../../Obelisks/Obelisk")
+
+[node name="HagStone2" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+position = Vector2(-313, -965)
+matched_obelisk = NodePath("../../Obelisks/Obelisk2")
+
+[node name="HagStone3" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+position = Vector2(215, -1044)
+matched_obelisk = NodePath("../../Obelisks/Obelisk3")
+
+[node name="HagStone4" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+position = Vector2(519, -572)
+matched_obelisk = NodePath("../../Obelisks/Obelisk4")
+
+[node name="HagStone5" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+position = Vector2(323, -177)
+matched_obelisk = NodePath("../../Obelisks/Obelisk5")
+
+[node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
+position = Vector2(-246, -105)
+matched_obelisk = NodePath("../../Obelisks/Obelisk6")
+
 [node name="Lights" type="Node2D" parent="Scene2D"]
 
 [node name="Moon" type="DirectionalLight2D" parent="Scene2D/Lights"]
@@ -120,32 +146,6 @@ position = Vector2(1711, -1420)
 
 [node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
 position = Vector2(2044, 198)
-
-[node name="HagStones" type="Node2D" parent="Scene2D"]
-
-[node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
-position = Vector2(-523, -496)
-matched_obelisk = NodePath("../../Obelisks/Obelisk")
-
-[node name="HagStone2" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
-position = Vector2(-313, -965)
-matched_obelisk = NodePath("../../Obelisks/Obelisk2")
-
-[node name="HagStone3" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
-position = Vector2(215, -1044)
-matched_obelisk = NodePath("../../Obelisks/Obelisk3")
-
-[node name="HagStone4" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
-position = Vector2(519, -572)
-matched_obelisk = NodePath("../../Obelisks/Obelisk4")
-
-[node name="HagStone5" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
-position = Vector2(323, -177)
-matched_obelisk = NodePath("../../Obelisks/Obelisk5")
-
-[node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
-position = Vector2(-246, -105)
-matched_obelisk = NodePath("../../Obelisks/Obelisk6")
 
 [node name="Player" parent="Scene2D" instance=ExtResource("1_btsov")]
 
