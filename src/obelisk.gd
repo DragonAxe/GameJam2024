@@ -7,6 +7,7 @@ class_name Obelisk extends Node2D
 @export var power_type : PowerType
 
 @export_category("Internal nodes")
+@export var place_sound: AudioStreamPlayer2D
 @export var collision_shapes : Array[CollisionShape2D]
 
 enum PowerType { FAST, SLOW, REPULSE, SENSORY, SPAWN }
@@ -96,3 +97,4 @@ func disable_collision(disabled: bool = true) -> void:
 
 func complete() -> void:
   completed = true
+  place_sound.play(1)

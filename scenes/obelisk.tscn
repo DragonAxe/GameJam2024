@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyfob7uhlklcs"]
+[gd_scene load_steps=7 format=3 uid="uid://cyfob7uhlklcs"]
 
 [ext_resource type="Script" path="res://src/obelisk.gd" id="1_snr1n"]
 [ext_resource type="Texture2D" uid="uid://d03fx6ehgp881" path="res://textures/obelisk1.png" id="3_4gb62"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="4_b01or"]
+[ext_resource type="AudioStream" uid="uid://cchvw0vrafuji" path="res://sounds/place_obelisk.wav" id="4_jsdox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djdbp"]
 size = Vector2(120, 120)
@@ -10,12 +11,13 @@ size = Vector2(120, 120)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6pcib"]
 polygon = PackedVector2Array(-56, 59, 55, 56, 54, -61, -58, -56)
 
-[node name="Obelisk" type="Node2D" node_paths=PackedStringArray("collision_shapes") groups=["obelisk"]]
+[node name="Obelisk" type="Node2D" node_paths=PackedStringArray("place_sound", "collision_shapes") groups=["obelisk"]]
 script = ExtResource("1_snr1n")
 particle_count = 25
 pulse_distance = 2500.0
 pulse_distance_weak = 200.0
 pulse_thickness = 200.0
+place_sound = NodePath("AudioStreamPlayer2D")
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -42,3 +44,6 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 visible = false
 shape = SubResource("RectangleShape2D_djdbp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jsdox")
