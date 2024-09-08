@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://coo4otvenrtfh"]
+[gd_scene load_steps=13 format=3 uid="uid://coo4otvenrtfh"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_l3klf"]
 [ext_resource type="Script" path="res://src/movement_controls.gd" id="2_1px6n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/death_sequence.gd" id="5_tr6cu"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="6_u5p12"]
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="6_ypaaa"]
+[ext_resource type="Script" path="res://src/player_timer.gd" id="7_lbgxc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0twys"]
 radius = 44.0
@@ -67,3 +68,16 @@ visible = false
 occluder = SubResource("OccluderPolygon2D_r1a41")
 occluder_light_mask = 2
 script = ExtResource("6_u5p12")
+
+[node name="PlayerTimer - Slow" type="Timer" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("7_lbgxc")
+movement = NodePath("../MovementControls")
+power_type = 1
+
+[node name="PlayerTimer - Repulse" type="Timer" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("7_lbgxc")
+movement = NodePath("../MovementControls")
+power_type = 2
+
+[connection signal="timeout" from="PlayerTimer - Slow" to="PlayerTimer - Slow" method="_on_timeout"]
+[connection signal="timeout" from="PlayerTimer - Repulse" to="PlayerTimer - Repulse" method="_on_timeout"]

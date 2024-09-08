@@ -86,4 +86,9 @@ script = ExtResource("8_lhdtn")
 movement = NodePath("../GolemMovement")
 power_type = 3
 
+[node name="GolemTimer - Repulse" type="Timer" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("8_lhdtn")
+movement = NodePath("../GolemMovement")
+power_type = 2
+
 [connection signal="timeout" from="GolemAttack/AttackTimer" to="GolemAttack" method="on_attack_timer_timeout"]

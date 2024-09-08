@@ -130,9 +130,13 @@ func power_up(power_type: Obelisk.PowerType) -> void:
     print("power up (fast)")
   if power_type == Obelisk.PowerType.SENSORY:
     print("power up (sensory)")
+  if power_type == Obelisk.PowerType.REPULSE:
+    print("power up (repulse)")
 
 func power_down(power_type: Obelisk.PowerType) -> void:
   if power_type == Obelisk.PowerType.FAST:
     print("power down... (fast)")
   if power_type == Obelisk.PowerType.SENSORY:
     print("power down... (sensory)")
+  if power_type == Obelisk.PowerType.REPULSE:
+    print("power down... (repulse)")

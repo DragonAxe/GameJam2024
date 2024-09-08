@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddc0tonn1xll2"]
+[gd_scene load_steps=21 format=3 uid="uid://ddc0tonn1xll2"]
 
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="1_6r2h2"]
 [ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="1_btsov"]
@@ -10,7 +10,7 @@
 [ext_resource type="Shader" path="res://shaders/shadows.gdshader" id="6_i8nwb"]
 [ext_resource type="Script" path="res://src/obelisk_timer.gd" id="6_o3nlv"]
 [ext_resource type="Script" path="res://src/visible_on_play.gd" id="7_5r1tn"]
-[ext_resource type="PackedScene" uid="uid://dgwoiifv6a07y" path="res://scenes/death_screen.tscn" id="9_aum8w"]
+[ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="9_aum8w"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
 vertices = PackedVector2Array(2495, 2654, 6345.62, 6367.53, -6356.84, 6332.46, 1226, 2654, 6392.37, -6369.46, 2495, 1318, -6345.15, -6404.53, 1842, 1172, 1842, 1318, 258, 1172, -103, 1115.01, 258, 2104, -103, 2104, -563, 1115.01, -563, 2555, 716, 2555, 1226, 1654, 716, 1654)
@@ -176,8 +176,10 @@ collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 wait_time = 4.0
 script = ExtResource("6_o3nlv")
 
-[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_btsov")]
+[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules", "power_up_timer_slow", "power_up_timer_repulse") instance=ExtResource("1_btsov")]
 integrate_forces_modules = [NodePath("MovementControls")]
+power_up_timer_slow = NodePath("PlayerTimer - Slow")
+power_up_timer_repulse = NodePath("PlayerTimer - Repulse")
 
 [node name="Golems" type="Node2D" parent="Scene2D"]
 
