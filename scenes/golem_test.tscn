@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://410mx0e0n6ty"]
+[gd_scene load_steps=5 format=3 uid="uid://83005jkemm6j"]
 
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="1_h7djf"]
-[ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="2_74ncs"]
-[ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="5_5kenb"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_74ncs"]
 [ext_resource type="Script" path="res://src/golem_spawner.gd" id="5_8cuo0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_28rws"]
@@ -19,17 +18,12 @@ navigation_polygon = SubResource("NavigationPolygon_28rws")
 
 [node name="Camera2D" type="Camera2D" parent="Scene2D"]
 
-[node name="Golem" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_h7djf")]
+[node name="Golem" parent="Scene2D" instance=ExtResource("1_h7djf")]
 position = Vector2(-530, -218)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
 [node name="Player" parent="Scene2D" instance=ExtResource("2_74ncs")]
+position = Vector2(644, 344)
 
 [node name="GolemSpawner" type="Node" parent="Scene2D"]
 script = ExtResource("5_8cuo0")
 golem_scene = ExtResource("1_h7djf")
-
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("dialog", "focused_control") instance=ExtResource("5_5kenb")]
-visible = false
-dialog = NodePath("DialogBox")
-focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
