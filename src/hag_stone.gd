@@ -32,3 +32,5 @@ func capture_obelisk(obelisk: Obelisk) -> void:
   obelisk.get_parent().remove_child(obelisk)
   add_child(obelisk)
   obelisk.global_position = global_position
+  if obelisk == matched_obelisk:
+    obelisk.activate_pulse(true)
