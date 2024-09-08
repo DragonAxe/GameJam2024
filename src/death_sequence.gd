@@ -10,7 +10,7 @@ extends Node
 var dead: bool = false
 
 func _process(delta: float) -> void:
-  if health_node.health < 0 and not dead:
+  if health_node.health <= 0.001 and not dead:
     dead = true
     var death_position: Vector2 = parent.global_position
     parent.remove_child(camera)
