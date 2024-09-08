@@ -67,6 +67,7 @@ gdscript/warnings/function_used_as_property=2
 
 window/size/viewport_width=1200
 window/size/viewport_height=700
+window/size/mode=2
 
 [dotnet]
 

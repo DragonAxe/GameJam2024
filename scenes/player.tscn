@@ -12,6 +12,7 @@ radius = 67.0298
 size = Vector2(120, 120)
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["player"]]
+linear_damp = 30.0
 script = ExtResource("1_l3klf")
 integrate_forces_modules = [NodePath("MovementControls")]
 

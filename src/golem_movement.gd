@@ -2,6 +2,11 @@ extends Node
 
 @export var movement_speed: float = 100.0
 
+@export var discovery_distance: float = 1000
+
+@export_category("Sibling nodes")
+@export var discovery_sound: AudioStreamPlayer2D
+
 @export_category("Internal nodes")
 @export var navigation_agent: NavigationAgent2D
 
@@ -77,6 +82,7 @@ func rest() -> void:
     rest_cooldown.timeout.disconnect(rest_timeout)
     rest_cooldown = null
     ai_state = AiState.FOLLOW_PLAYER
+    discovery_sound.play()
 func rest_timeout() -> void:
   rest_cooldown = null
   ai_state = AiState.RANDOM_PATROL
@@ -95,15 +101,16 @@ func random_patrol_wait() -> void:
     ai_state = AiState.REST
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
   var player_distance: float = player.global_position.distance_to(parent.global_position)
-  if player_distance < 500:
+  if player_distance < discovery_distance:
       ai_state = AiState.FOLLOW_PLAYER
+      discovery_sound.play()
   
   
 func follow_player() -> void:
   var player: RigidBody2D = get_tree().get_first_node_in_group("player")
   set_movement_target(player.global_position)
   var player_distance: float = player.global_position.distance_to(parent.global_position)
-  if player_distance > 500:
+  if player_distance > discovery_distance:
     ai_state = AiState.RANDOM_PATROL
 
 
