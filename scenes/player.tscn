@@ -21,7 +21,7 @@ size = Vector2(120, 120)
 polygon = PackedVector2Array(-35, 27, -54, 26, -61, 22, -67, 13, -69, 5, -68, -9, -63, -15, -46, -20, -36, -20, -27, -20, -24, -23, -20, -28, -15, -31, -8, -32, -4, -35, 0, -40, 3, -41, 5, -37, 8, -33, 11, -31, 17, -30, 21, -30, 25, -26, 28, -24, 32, -21, 41, -21, 50, -22, 60, -20, 65, -15, 70, -8, 71, -1, 71, 8, 69, 12, 67, 20, 61, 24, 55, 27, 46, 29, 38, 28, 30, 28, 23, 28, 19, 31, 16, 34, 11, 37, 6, 39, -1, 40, -7, 41, -12, 41, -19, 40, -23, 38, -27, 34, -30, 30)
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules") groups=["player"]]
-linear_damp = 30.0
+linear_damp = 15.0
 script = ExtResource("1_l3klf")
 integrate_forces_modules = [NodePath("MovementControls")]
 

@@ -758,9 +758,9 @@ position = Vector2(2755, -403)
 [node name="DeathUI" parent="." instance=ExtResource("9_aum8w")]
 visible = false
 
+[node name="WinUI" parent="." instance=ExtResource("16_64rsq")]
+
 [node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
 visible = false
-
-[node name="WinUI" parent="." instance=ExtResource("16_64rsq")]
 
 [connection signal="timeout" from="Scene2D/Obelisks/ObeliskTimer" to="Scene2D/Obelisks/ObeliskTimer" method="_on_timeout"]
