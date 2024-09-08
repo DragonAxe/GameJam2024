@@ -1,11 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://410mx0e0n6ty"]
 
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="1_h7djf"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="2_74ncs"]
-=======
-[ext_resource type="PackedScene" uid="uid://c7yvuanblqci0" path="res://scenes/player.tscn" id="2_74ncs"]
->>>>>>> 84ecd8a5a9376bfd14ba424fa5f4395869de73e6
 [ext_resource type="Script" path="res://src/golem_spawner.gd" id="5_8cuo0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_28rws"]
@@ -20,19 +16,12 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2096, -1662, -524, -15
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Scene2D"]
 navigation_polygon = SubResource("NavigationPolygon_28rws")
 
-<<<<<<< HEAD
-[node name="Camera2D" type="Camera2D" parent="Scene2D"]
-
 [node name="Golem" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_h7djf")]
-=======
-[node name="Golem" parent="Scene2D" instance=ExtResource("1_h7djf")]
->>>>>>> 84ecd8a5a9376bfd14ba424fa5f4395869de73e6
 position = Vector2(-530, -218)
-integrate_forces_modules = [NodePath("GolemMovement")]
+integrate_forces_modules = []
 
-[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_74ncs")]
+[node name="Player" parent="Scene2D" instance=ExtResource("2_74ncs")]
 position = Vector2(644, 344)
-integrate_forces_modules = [NodePath("MovementControls")]
 
 [node name="GolemSpawner" type="Node" parent="Scene2D"]
 script = ExtResource("5_8cuo0")
