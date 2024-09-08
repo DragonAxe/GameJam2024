@@ -17,13 +17,15 @@ path = "pause_unpause"
 show_mode = 0
 force_type = 0
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("dialog", "focused_control") groups=["disable_escape_to_quit"]]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("dialog", "focused_control", "background_blur") groups=["disable_escape_to_quit"]]
 process_mode = 3
 script = ExtResource("1_qbybr")
 dialog = NodePath("DialogBox")
 focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
+background_blur = NodePath("BackgroundBlur")
 
 [node name="BackgroundBlur" parent="." instance=ExtResource("2_ychph")]
+blur_modifier = 3.5
 
 [node name="DialogBox" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -51,7 +53,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Label" type="Label" parent="DialogBox/Dialog/Header"]
 layout_mode = 2
-text = "~  Game Jam 2024  ~"
+text = "~  Obelisk's of the Fourth City  ~"
 horizontal_alignment = 1
 
 [node name="Body" type="MarginContainer" parent="DialogBox/Dialog"]
@@ -69,6 +71,10 @@ theme_override_constants/separation = 40
 layout_mode = 2
 text = "Quit"
 script = ExtResource("5_ublbo")
+
+[node name="Restart" type="Button" parent="DialogBox/Dialog/Body/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
 
 [node name="Fullscreen" type="CheckButton" parent="DialogBox/Dialog/Body/VBoxContainer"]
 layout_mode = 2
