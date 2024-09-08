@@ -1,4 +1,4 @@
-extends Node2D
+class_name HagStone extends Node2D
 
 @export var matched_obelisk: Obelisk
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dmepkjydj2b1j"]
 
 [ext_resource type="Script" path="res://src/pause_menu.gd" id="1_qbybr"]
-[ext_resource type="PackedScene" uid="uid://dnkb2jqx5ani0" path="res://scenes/background_blur.tscn" id="2_ychph"]
+[ext_resource type="PackedScene" uid="uid://v4daba3rwpr4" path="res://scenes/background_blur.tscn" id="2_ychph"]
 [ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="4_4ygx5"]
 [ext_resource type="Script" path="res://src/restart_game.gd" id="5_oa2ml"]
 [ext_resource type="Script" path="res://src/quit.gd" id="5_ublbo"]
@@ -25,9 +25,8 @@ dialog = NodePath("DialogBox")
 focused_control = NodePath("DialogBox/Dialog/Body/GridContainer/Quit")
 background_blur = NodePath("BackgroundBlur")
 
-[node name="BackgroundBlur" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("2_ychph")]
+[node name="BackgroundBlur" parent="." instance=ExtResource("2_ychph")]
 blur_modifier = 3.5
-animation_player = NodePath("AnimationPlayer")
 
 [node name="DialogBox" type="PanelContainer" parent="."]
 anchors_preset = 8

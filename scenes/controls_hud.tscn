@@ -54,6 +54,7 @@ force_type = 0
 [node name="ControlsHUD" type="CanvasLayer"]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0.737255)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -76,23 +77,43 @@ theme_override_constants/margin_left = 20
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-text = "Movement:"
+text = "Move:"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = SubResource("Texture2D_8qmwb")
+expand_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/CenterContainer3"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = SubResource("Texture2D_71ebr")
+expand_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="CenterContainer4" type="CenterContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/CenterContainer4"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = SubResource("Texture2D_turqs")
+expand_mode = 2
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="CenterContainer5" type="CenterContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/CenterContainer5"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = SubResource("Texture2D_50x86")
+expand_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
@@ -102,9 +123,14 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "Pick up Obelisk:"
 
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="CenterContainer6" type="CenterContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/CenterContainer6"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = SubResource("Texture2D_aeqlt")
+expand_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
@@ -114,6 +140,11 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "Pause:"
 
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = SubResource("Texture2D_b00wg")
+expand_mode = 2
