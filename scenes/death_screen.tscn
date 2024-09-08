@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgwoiifv6a07y"]
 
-[ext_resource type="PackedScene" uid="uid://v4daba3rwpr4" path="res://scenes/background_blur.tscn" id="1_qcx6b"]
+[ext_resource type="Script" path="res://src/death_screen.gd" id="1_s76q7"]
 [ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="2_whgov"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_jqjs6"]
 
@@ -12,10 +12,9 @@ path = "pause_unpause"
 show_mode = 0
 force_type = 0
 
-[node name="DeathUI" type="CanvasLayer"]
-visible = false
-
-[node name="BackgroundBlur" parent="." instance=ExtResource("1_qcx6b")]
+[node name="DeathUI" type="CanvasLayer" node_paths=PackedStringArray("dialog")]
+script = ExtResource("1_s76q7")
+dialog = NodePath("MarginContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 12
