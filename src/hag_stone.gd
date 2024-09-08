@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var matched_obelisk: Obelisk
+
 @export_category("Internal nodes")
 @export var snap_area: Area2D
 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddc0tonn1xll2"]
+[gd_scene load_steps=18 format=3 uid="uid://ddc0tonn1xll2"]
 
 [ext_resource type="PackedScene" uid="uid://dmepkjydj2b1j" path="res://scenes/pause_menu.tscn" id="1_6r2h2"]
 [ext_resource type="PackedScene" uid="uid://coo4otvenrtfh" path="res://scenes/player.tscn" id="1_btsov"]
 [ext_resource type="Texture2D" uid="uid://b3pfcb7i1apvp" path="res://textures/level_layout_blocking.png" id="1_hj0ty"]
 [ext_resource type="PackedScene" uid="uid://c03ibs6ruv5mp" path="res://scenes/golem.tscn" id="2_tjvhw"]
-[ext_resource type="PackedScene" path="res://scenes/hag_stone.tscn" id="3_6o678"]
+[ext_resource type="PackedScene" uid="uid://cqcam4o83guaj" path="res://scenes/hag_stone.tscn" id="3_6o678"]
 [ext_resource type="PackedScene" uid="uid://cyfob7uhlklcs" path="res://scenes/obelisk.tscn" id="3_a11kn"]
-[ext_resource type="PackedScene" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
+[ext_resource type="PackedScene" uid="uid://crhu1tn6dqxvq" path="res://scenes/health_ui.tscn" id="6_cqjgr"]
+[ext_resource type="Shader" path="res://shaders/shadows.gdshader" id="6_i8nwb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35uj4"]
 vertices = PackedVector2Array(2495, 2654, 6345.62, 6367.53, -6356.84, 6332.46, 1226, 2654, 6392.37, -6369.46, 2495, 1318, -6345.15, -6404.53, 1842, 1172, 1842, 1318, 258, 1172, -103, 1115.01, 258, 2104, -103, 2104, -563, 1115.01, -563, 2555, 716, 2555, 1226, 1654, 716, 1654)
@@ -29,6 +30,19 @@ size = Vector2(103.667, 11.8333)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwjf2"]
 size = Vector2(77.4167, 83)
 
+[sub_resource type="Gradient" id="Gradient_5g7j0"]
+offsets = PackedFloat32Array(0, 0.779412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_clpyd"]
+gradient = SubResource("Gradient_5g7j0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u85xi"]
+shader = ExtResource("6_i8nwb")
+shader_parameter/color = Color(0, 0, 0, 0.360784)
+shader_parameter/angle = 206.399
+shader_parameter/max_dist = 100.0
+shader_parameter/gradientTexture = SubResource("GradientTexture2D_clpyd")
+
 [node name="Main" type="Node"]
 
 [node name="Scene2D" type="Node2D" parent="."]
@@ -37,6 +51,8 @@ size = Vector2(77.4167, 83)
 navigation_polygon = SubResource("NavigationPolygon_35uj4")
 
 [node name="LevelLayoutBlocking" type="Sprite2D" parent="Scene2D/NavigationRegion2D"]
+light_mask = 3
+visibility_layer = 3
 texture_filter = 1
 scale = Vector2(12, 12)
 texture = ExtResource("1_hj0ty")
@@ -85,70 +101,76 @@ position = Vector2(2044, 198)
 
 [node name="HagStones" type="Node2D" parent="Scene2D"]
 
-[node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+[node name="HagStone" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
 position = Vector2(-523, -496)
-snap_area = NodePath("SnapArea")
+matched_obelisk = NodePath("../../Obelisks/Obelisk")
 
-[node name="HagStone2" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+[node name="HagStone2" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
 position = Vector2(-313, -965)
-snap_area = NodePath("SnapArea")
+matched_obelisk = NodePath("../../Obelisks/Obelisk2")
 
-[node name="HagStone3" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+[node name="HagStone3" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
 position = Vector2(215, -1044)
-snap_area = NodePath("SnapArea")
+matched_obelisk = NodePath("../../Obelisks/Obelisk3")
 
-[node name="HagStone4" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+[node name="HagStone4" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
 position = Vector2(519, -572)
-snap_area = NodePath("SnapArea")
+matched_obelisk = NodePath("../../Obelisks/Obelisk4")
 
-[node name="HagStone5" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+[node name="HagStone5" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
 position = Vector2(323, -177)
-snap_area = NodePath("SnapArea")
+matched_obelisk = NodePath("../../Obelisks/Obelisk5")
 
-[node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("snap_area") instance=ExtResource("3_6o678")]
+[node name="HagStone6" parent="Scene2D/HagStones" node_paths=PackedStringArray("matched_obelisk") instance=ExtResource("3_6o678")]
 position = Vector2(-246, -105)
-snap_area = NodePath("SnapArea")
+matched_obelisk = NodePath("../../Obelisks/Obelisk6")
 
-[node name="Player" parent="Scene2D" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("1_btsov")]
-integrate_forces_modules = [NodePath("MovementControls")]
+[node name="Player" parent="Scene2D" instance=ExtResource("1_btsov")]
 
 [node name="Golems" type="Node2D" parent="Scene2D"]
 
-[node name="Golem" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-1276, -961)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem2" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem2" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-295, -1279)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem3" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem3" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(1019, -1431)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem4" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem4" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(2140, -348)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem5" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem5" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(1930, 1319)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem6" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem6" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(114, 1756)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem7" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem7" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-981, 1271)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="Golem8" parent="Scene2D/Golems" node_paths=PackedStringArray("integrate_forces_modules") instance=ExtResource("2_tjvhw")]
+[node name="Golem8" parent="Scene2D/Golems" instance=ExtResource("2_tjvhw")]
 position = Vector2(-1791, 334)
-integrate_forces_modules = [NodePath("GolemMovement")]
 
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("dialog", "focused_control") instance=ExtResource("1_6r2h2")]
+[node name="Lights" type="Node2D" parent="Scene2D"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Scene2D/Lights"]
 visible = false
-dialog = NodePath("DialogBox")
-focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
+rotation = -0.344855
+shadow_enabled = true
+shadow_item_cull_mask = 2
+height = 1.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Scene2D/Lights"]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="Shadows" type="Polygon2D" parent="Scene2D/Lights"]
+material = SubResource("ShaderMaterial_u85xi")
+polygon = PackedVector2Array(-6973, -7316, 7945, -7299, 7775, 7517, -7244, 7686)
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_6r2h2")]
+visible = false
 
 [node name="HealthUI" parent="." instance=ExtResource("6_cqjgr")]

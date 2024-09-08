@@ -25,6 +25,7 @@ func _ready() -> void:
     var particle : Node2D = particle_scene.instantiate()
     add_child(particle)
     particles.append(particle)
+    particle.visible = false
 
   particle_texture_size = (particles[0].get_children()[0] as Sprite2D).texture.get_size()
 

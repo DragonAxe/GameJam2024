@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyfob7uhlklcs"]
+[gd_scene load_steps=7 format=3 uid="uid://cyfob7uhlklcs"]
 
 [ext_resource type="Script" path="res://src/obelisk.gd" id="1_snr1n"]
 [ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="2_hkmar"]
+[ext_resource type="Texture2D" uid="uid://d03fx6ehgp881" path="res://textures/obelisk1.png" id="3_4gb62"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xgnoi"]
 particle_flag_disable_z = true
@@ -12,6 +13,9 @@ initial_velocity_max = 1000.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djdbp"]
 size = Vector2(120, 120)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6pcib"]
+polygon = PackedVector2Array(-56, 59, 55, 56, 54, -61, -58, -56)
 
 [node name="Obelisk" type="Node2D" groups=["obelisk"]]
 script = ExtResource("1_snr1n")
@@ -59,7 +63,8 @@ collision_base_size = 0.0
 draw_order = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_hkmar")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_4gb62")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 512
@@ -67,3 +72,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_djdbp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_6pcib")
+occluder_light_mask = 2

@@ -55,7 +55,6 @@ target_desired_distance = 50.0
 path_max_distance = 400.0
 avoidance_enabled = true
 radius = 274.0
-debug_enabled = true
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 0
