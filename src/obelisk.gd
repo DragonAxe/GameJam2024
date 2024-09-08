@@ -5,6 +5,9 @@ class_name Obelisk extends Node2D
 @export var pulse_thickness : float
 @export var power_type : PowerType
 
+@export_category("Internal nodes")
+@export var collision_shapes : Array[CollisionShape2D]
+
 enum PowerType { FAST, SLOW, REPULSE, SENSORY, SPAWN }
 
 var particle_scene : PackedScene
@@ -66,3 +69,8 @@ func reset() -> void:
 
   current_radius = 0
   pulsed = false
+
+
+func disable_collision(disabled: bool = true) -> void:
+  for shape: CollisionShape2D in collision_shapes:
+    shape.disabled = disabled

@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 
 
 func capture_obelisk(obelisk: Obelisk) -> void:
+  obelisk.disable_collision(false)
   obelisk.get_parent().remove_child(obelisk)
   add_child(obelisk)
   obelisk.global_position = global_position
