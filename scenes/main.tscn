@@ -687,21 +687,25 @@ collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 [node name="Obelisk2" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(-1590, 888)
+power_type = 1
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="Obelisk3" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(1, 0, 1, 1)
 position = Vector2(-1495, -616)
+power_type = 3
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="Obelisk4" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-592, -1752)
+power_type = 2
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="Obelisk5" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(1711, -1420)
+power_type = 1
 collision_shapes = [NodePath("StaticBody2D/CollisionShape2D")]
 
 [node name="Obelisk6" parent="Scene2D/Obelisks" node_paths=PackedStringArray("collision_shapes") instance=ExtResource("3_a11kn")]

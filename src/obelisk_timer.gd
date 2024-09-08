@@ -11,8 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
   var time_elapsed : float = wait_time - time_left
   for i : int in range(len(obelisks)):
-    if time_elapsed > i * wait_time / len(obelisks):
-      obelisks[i].pulse()
+    obelisks[i].pulse()
     obelisks[i].update_pulse_wave(time_elapsed / wait_time)
 
 func _on_timeout() -> void:
