@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://c03ibs6ruv5mp"]
 
-[ext_resource type="Texture2D" uid="uid://cf3x4gvtuqhqb" path="res://icon.svg" id="1_2gt2m"]
 [ext_resource type="Script" path="res://src/golem.gd" id="1_8frd6"]
 [ext_resource type="AudioStream" uid="uid://cpv6p38pjal12" path="res://sounds/horse-snort-95874_slow.mp3" id="2_6tnob"]
 [ext_resource type="Script" path="res://src/golem_movement.gd" id="2_v0qo3"]
 [ext_resource type="Script" path="res://src/golem_attack.gd" id="3_vl6wx"]
 [ext_resource type="AudioStream" uid="uid://b3tcbf0iisujo" path="res://sounds/stone-push-37412.mp3" id="4_bsebh"]
+[ext_resource type="Texture2D" uid="uid://x6tfqlqb4df8" path="res://textures/golem_cobined.png" id="6_nd7bd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i31i5"]
-size = Vector2(192, 192)
+size = Vector2(274, 147)
 
 [node name="Golem" type="RigidBody2D" node_paths=PackedStringArray("integrate_forces_modules")]
 script = ExtResource("1_8frd6")
@@ -37,12 +37,14 @@ stream = ExtResource("4_bsebh")
 pitch_scale = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -24.5)
 shape = SubResource("RectangleShape2D_i31i5")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 0.407246, 0.338652, 1)
+rotation = 3.14159
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_2gt2m")
+texture = ExtResource("6_nd7bd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
