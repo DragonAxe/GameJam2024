@@ -4,8 +4,13 @@ extends Node2D
 
 @export_category("Internal nodes")
 @export var snap_area: Area2D
+@export var texture_rect: TextureRect
 
 var captured: int = 0
+
+
+func _ready() -> void:
+  texture_rect.modulate = matched_obelisk.modulate
 
 
 func _physics_process(delta: float) -> void:

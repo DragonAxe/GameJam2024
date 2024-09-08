@@ -133,18 +133,23 @@ modulate = Color(0, 1, 1, 1)
 position = Vector2(1219, 1153)
 
 [node name="Obelisk2" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(1, 1, 0, 1)
 position = Vector2(-1590, 888)
 
 [node name="Obelisk3" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(1, 0, 1, 1)
 position = Vector2(-1495, -616)
 
 [node name="Obelisk4" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(-592, -1752)
 
 [node name="Obelisk5" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(0, 1, 0, 1)
 position = Vector2(1711, -1420)
 
 [node name="Obelisk6" parent="Scene2D/Obelisks" instance=ExtResource("3_a11kn")]
+modulate = Color(0, 0, 1, 1)
 position = Vector2(2044, 198)
 
 [node name="Player" parent="Scene2D" instance=ExtResource("1_btsov")]

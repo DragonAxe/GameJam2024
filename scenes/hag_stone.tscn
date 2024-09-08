@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqcam4o83guaj"]
+[gd_scene load_steps=5 format=3 uid="uid://cqcam4o83guaj"]
 
 [ext_resource type="Script" path="res://src/hag_stone.gd" id="1_vtohs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgimf"]
 radius = 60.0083
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5tnc6"]
+[sub_resource type="Gradient" id="Gradient_47kra"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[node name="HagStone" type="Node2D" node_paths=PackedStringArray("snap_area") groups=["hag_stone"]]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ykx4"]
+gradient = SubResource("Gradient_47kra")
+
+[node name="HagStone" type="Node2D" node_paths=PackedStringArray("snap_area", "texture_rect") groups=["hag_stone"]]
 script = ExtResource("1_vtohs")
 snap_area = NodePath("SnapArea")
+texture_rect = NodePath("TextureRect")
 
 [node name="SnapArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -19,6 +24,7 @@ collision_mask = 512
 shape = SubResource("CircleShape2D_pgimf")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(140, 140)
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,6 +37,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_5tnc6")
+texture = SubResource("GradientTexture2D_7ykx4")
 
 [connection signal="area_entered" from="SnapArea" to="." method="_on_snap_area_entered"]
