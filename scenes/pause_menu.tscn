@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dmepkjydj2b1j"]
 
 [ext_resource type="Script" path="res://src/pause_menu.gd" id="1_qbybr"]
-[ext_resource type="PackedScene" uid="uid://dnkb2jqx5ani0" path="res://scenes/background_blur.tscn" id="2_ychph"]
+[ext_resource type="PackedScene" uid="uid://v4daba3rwpr4" path="res://scenes/background_blur.tscn" id="2_ychph"]
 [ext_resource type="Theme" uid="uid://drsskjm7tgldm" path="res://themes/theme.tres" id="4_4ygx5"]
 [ext_resource type="Script" path="res://src/restart_game.gd" id="5_oa2ml"]
 [ext_resource type="Script" path="res://src/quit.gd" id="5_ublbo"]
@@ -22,12 +22,11 @@ force_type = 0
 process_mode = 3
 script = ExtResource("1_qbybr")
 dialog = NodePath("DialogBox")
-focused_control = NodePath("DialogBox/Dialog/Body/VBoxContainer/Quit")
+focused_control = NodePath("DialogBox/Dialog/Body/GridContainer/Quit")
 background_blur = NodePath("BackgroundBlur")
 
-[node name="BackgroundBlur" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("2_ychph")]
+[node name="BackgroundBlur" parent="." instance=ExtResource("2_ychph")]
 blur_modifier = 3.5
-animation_player = NodePath("AnimationPlayer")
 
 [node name="DialogBox" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -35,12 +34,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -207.5
-offset_top = -269.5
-offset_right = 207.5
-offset_bottom = 269.5
+offset_left = -296.5
+offset_top = -199.5
+offset_right = 296.5
+offset_bottom = 199.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("4_4ygx5")
 
 [node name="Dialog" type="VBoxContainer" parent="DialogBox"]
@@ -65,34 +66,40 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/Dialog/Body"]
+[node name="GridContainer" type="GridContainer" parent="DialogBox/Dialog/Body"]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 40
+columns = 2
 
-[node name="Quit" type="Button" parent="DialogBox/Dialog/Body/VBoxContainer"]
+[node name="Quit" type="Button" parent="DialogBox/Dialog/Body/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Quit"
 script = ExtResource("5_ublbo")
 
-[node name="Restart" type="Button" parent="DialogBox/Dialog/Body/VBoxContainer"]
+[node name="Restart" type="Button" parent="DialogBox/Dialog/Body/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Restart"
 script = ExtResource("5_oa2ml")
 
-[node name="Fullscreen" type="CheckButton" parent="DialogBox/Dialog/Body/VBoxContainer"]
-layout_mode = 2
-text = "Full Screen"
-script = ExtResource("6_6ro1y")
-
-[node name="Resume" type="Button" parent="DialogBox/Dialog/Body/VBoxContainer"]
+[node name="Resume" type="Button" parent="DialogBox/Dialog/Body/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("7_rllgh")
 text = "Resume"
 icon = SubResource("Texture2D_0da2w")
 script = ExtResource("9_kwxwd")
 
-[connection signal="pressed" from="DialogBox/Dialog/Body/VBoxContainer/Quit" to="DialogBox/Dialog/Body/VBoxContainer/Quit" method="quit"]
-[connection signal="pressed" from="DialogBox/Dialog/Body/VBoxContainer/Restart" to="DialogBox/Dialog/Body/VBoxContainer/Restart" method="restart_game"]
-[connection signal="toggled" from="DialogBox/Dialog/Body/VBoxContainer/Fullscreen" to="DialogBox/Dialog/Body/VBoxContainer/Fullscreen" method="on_toggled"]
-[connection signal="pressed" from="DialogBox/Dialog/Body/VBoxContainer/Resume" to="DialogBox/Dialog/Body/VBoxContainer/Resume" method="_on_pressed"]
-[connection signal="resume" from="DialogBox/Dialog/Body/VBoxContainer/Resume" to="." method="resume"]
+[node name="Fullscreen" type="CheckButton" parent="DialogBox/Dialog/Body/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Full Screen"
+script = ExtResource("6_6ro1y")
+
+[connection signal="pressed" from="DialogBox/Dialog/Body/GridContainer/Quit" to="DialogBox/Dialog/Body/GridContainer/Quit" method="quit"]
+[connection signal="pressed" from="DialogBox/Dialog/Body/GridContainer/Restart" to="DialogBox/Dialog/Body/GridContainer/Restart" method="restart_game"]
+[connection signal="pressed" from="DialogBox/Dialog/Body/GridContainer/Resume" to="DialogBox/Dialog/Body/GridContainer/Resume" method="_on_pressed"]
+[connection signal="resume" from="DialogBox/Dialog/Body/GridContainer/Resume" to="." method="resume"]
+[connection signal="toggled" from="DialogBox/Dialog/Body/GridContainer/Fullscreen" to="DialogBox/Dialog/Body/GridContainer/Fullscreen" method="on_toggled"]
