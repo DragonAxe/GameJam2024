@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dndeeih88ofc7"]
+[gd_scene load_steps=4 format=3 uid="uid://dndeeih88ofc7"]
 
 [ext_resource type="Texture2D" uid="uid://dx5hb86dwdygh" path="res://textures/wall1.png" id="1_518rt"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8rskc"]
+polygon = PackedVector2Array(-414, 401, -270, 401, -234, 395, -202, 413, 280, 415, 290, -87, 238, -117, 230, 257, 106, 369, -374, 367)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y4aho"]
+polygon = PackedVector2Array(238, -165, 268, -183, 290, -167, 298, -451, 270, -461, 272, -267, 234, -215)
 
 [node name="Wall1" type="StaticBody2D"]
 
@@ -9,3 +15,9 @@ texture = ExtResource("1_518rt")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-372, 371, 104, 375, 234, 261, 236, -207, 274, -261, 278, -455, 300, -449, 300, -163, 354, -137, 358, -83, 296, -83, 288, 417, -480, 455)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_8rskc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="LightOccluder2D"]
+occluder = SubResource("OccluderPolygon2D_y4aho")
