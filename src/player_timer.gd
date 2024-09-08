@@ -17,3 +17,7 @@ func _on_timeout() -> void:
   assert(movement.has_method("power_down"))
   movement.call("power_down", power_type)
   empowered = false
+
+
+func _on_player_timer__repulse_timeout() -> void:
+  pass # Replace with function body.
